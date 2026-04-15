@@ -215,6 +215,21 @@ nav ul li ul li a:hover {
   -webkit-text-stroke: 1px black; /* outline thickness + color */
   -webkit-text-fill-color: white; /* inside text color */
 }
+
+.nationalOrgs-hero{
+  background: url(nationalOrgsBg.png) center/cover no-repeat;
+  font-size: 2rem;
+  height: 300px;
+}
+.nationalOrgs-hero h1{
+  position: relative;
+  color: white;
+  margin-top: 225px;
+  z-index: 2;
+  color: white; 
+  -webkit-text-stroke: 1px black; /* outline thickness + color */
+  -webkit-text-fill-color: white; /* inside text color */
+}
 .hero iframe {
     width: 100%;
     height: 100%;
@@ -1058,3 +1073,37 @@ a {
 a:hover {
   text-decoration: underline;
 }
+
+ /* ===== FOOTER ===== */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            font-size: 14px;
+            margin-top: 40px;
+        }
+ 
+        .footer-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 20px;
+        }
+ 
+        .footer-column { flex: 1; }
+        .footer-info-col { max-width: 430px; }
+        .footer-logo img { max-width: 100%; display: block; margin-bottom: 15px; }
+        .footer-info address { font-style: normal; line-height: 1.5; }
+        .footer-map { height: 250px; }
+        .footer-map iframe { width: 100%; height: 100%; border: 0; margin-top: 25px; }
+        .footer-bottom {
+            margin-top: 15px;
+            text-align: center;
+            font-size: 12px;
+            border-top: 1px solid rgba(255,255,255,0.3);
+            padding-top: 10px;
+        }
+ 
+        footer a { color: #ffd966; text-decoration: none; }
+        footer a:hover { text-decoration: underline; }
