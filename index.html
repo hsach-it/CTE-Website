@@ -155,6 +155,81 @@
 
   </div>
 
+  <!-- News Section -->
+<div class="news-section">
+  <h2 class="news-heading">LATEST NEWS</h2>
+  <div class="news-carousel-wrapper">
+    <button class="news-arrow news-arrow-left" onclick="slideNews(-1)" aria-label="Previous">&#8249;</button>
+    <div class="news-carousel-track-container">
+      <div class="news-carousel-track" id="newsTrack">
+
+        <div class="news-card">
+          <div class="news-card-img-wrapper">
+            <img src="image1.png" alt="News 1" />
+          </div>
+          <div class="news-card-body">
+            <span class="news-tag">Announcement</span>
+            <h3>June 10th Special Board Meeting Cancelled</h3>
+            <p>Due to unforeseen circumstances, the June 10th Special Board Meeting has been canceled.</p>
+            <a href="#" class="news-read-more">Read More →</a>
+          </div>
+        </div>
+
+        <div class="news-card">
+          <div class="news-card-img-wrapper">
+            <img src="image2.png" alt="News 2" />
+          </div>
+          <div class="news-card-body">
+            <span class="news-tag">Student Achievement</span>
+            <h3>Area Students Honored in Career Portfolio Competition</h3>
+            <p>Five outstanding students have been named winners of the annual Career Portfolio Competition. Each recipient will receive a cash award.</p>
+            <a href="#" class="news-read-more">Read More →</a>
+          </div>
+        </div>
+
+        <div class="news-card">
+          <div class="news-card-img-wrapper">
+            <img src="software.png" alt="News 3" />
+          </div>
+          <div class="news-card-body">
+            <span class="news-tag">Innovation</span>
+            <h3>Students Turn Classroom Learning into Real-World Innovation</h3>
+            <p>Students recently took on a challenge that mirrors the work of professional engineers: design a system that could protect a life in a crash.</p>
+            <a href="#" class="news-read-more">Read More →</a>
+          </div>
+        </div>
+
+        <div class="news-card">
+          <div class="news-card-img-wrapper">
+            <img src="cybersecurity.png" alt="News 4" />
+          </div>
+          <div class="news-card-body">
+            <span class="news-tag">CTE</span>
+            <h3>Cybersecurity Students Compete at State Level</h3>
+            <p>HSA students earned top honors at the Ohio CyberPatriot competition, showcasing their skills in network defense and ethical hacking.</p>
+            <a href="#" class="news-read-more">Read More →</a>
+          </div>
+        </div>
+
+        <div class="news-card">
+          <div class="news-card-img-wrapper">
+            <img src="health.png" alt="News 5" />
+          </div>
+          <div class="news-card-body">
+            <span class="news-tag">Allied Health</span>
+            <h3>Allied Health Students Complete Clinical Shadowing Program</h3>
+            <p>Students in the Allied Health & Nursing pathway completed their annual clinical shadowing hours at local healthcare facilities this spring.</p>
+            <a href="#" class="news-read-more">Read More →</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <button class="news-arrow news-arrow-right" onclick="slideNews(1)" aria-label="Next">&#8250;</button>
+  </div>
+  <div class="news-dots" id="newsDots"></div>
+</div>
+
 
   
 
@@ -283,7 +358,40 @@
         }
       }
     });
+
+    // News Carousel
+const _newsTrack = document.getElementById('newsTrack');
+const _newsDotsContainer = document.getElementById('newsDots');
+const _newsCards = Array.from(_newsTrack.querySelectorAll('.news-card'));
+const _newsVisibleCount = 3;
+const _newsTotalSlides = Math.ceil(_newsCards.length / _newsVisibleCount);
+let _newsCurrentSlide = 0;
+
+for (let i = 0; i < _newsTotalSlides; i++) {
+  const dot = document.createElement('span');
+  dot.className = 'news-dot' + (i === 0 ? ' active' : '');
+  dot.addEventListener('click', () => goToNewsSlide(i));
+  _newsDotsContainer.appendChild(dot);
+}
+
+function goToNewsSlide(index) {
+  _newsCurrentSlide = Math.max(0, Math.min(index, _newsTotalSlides - 1));
+  const container = _newsTrack.parentElement;
+  const containerWidth = container.offsetWidth;
+  const gap = 20;
+  const cardWidth = (containerWidth - gap * (_newsVisibleCount - 1)) / _newsVisibleCount;
+  const offset = _newsCurrentSlide * (cardWidth + gap) * _newsVisibleCount;
+  _newsTrack.style.transform = `translateX(-${offset}px)`;
+  document.querySelectorAll('.news-dot').forEach((d, i) => {
+    d.classList.toggle('active', i === _newsCurrentSlide);
+  });
+}
+
+function slideNews(dir) {
+  goToNewsSlide(_newsCurrentSlide + dir);
+}
   </script>
+  
 
   <footer>
   <div class="footer-top">

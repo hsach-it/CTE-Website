@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>News – Horizon Science Academy</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    /* ══════════════════════════════
+       NEWS PAGE STYLES
+    ══════════════════════════════ */
+
+    .news-page {
+      max-width: 1200px;
+      margin: 50px auto;
+      padding: 0 40px 80px;
+    }
+
+    /* big left-aligned heading like the screenshot */
+    .news-page-title {
+      font-family: 'Oswald', sans-serif;
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--dark-color);
+      letter-spacing: 2px;
+      padding-bottom: 14px;
+      border-bottom: 4px solid var(--secondary-color);
+      margin-bottom: 40px;
+      display: inline-block;
+    }
+
+    /* ── each article row ── */
+    .news-item {
+      display: grid;
+      grid-template-columns: 540px 1fr;
+      gap: 40px;
+      align-items: center;
+      padding: 30px 0;
+      border-bottom: 1px solid #ddd;
+      text-decoration: none;
+      color: inherit;
+      transition: background 0.2s;
+    }
+
+    .news-item:hover { background: #f7f9fc; }
+    .news-item:last-child { border-bottom: none; }
+
+    /* thumbnail */
+    .news-thumb {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 4px;
+      display: block;
+    }
+
+    /* collage: 2×2 grid of images like the 3rd row in the screenshot */
+    .news-thumb-collage {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 110px 110px;
+      gap: 3px;
+      border-radius: 4px;
+      overflow: hidden;
+      height: 220px;
+    }
+    .news-thumb-collage img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* text side */
+    .news-text {}
+
+    .news-text h2 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 1.55rem;
+      font-weight: 600;
+      color: var(--primary-color);
+      line-height: 1.35;
+      margin-bottom: 14px;
+      transition: color 0.2s;
+    }
+
+    .news-item:hover .news-text h2 { color: var(--secondary-color); }
+
+    .news-text p {
+      font-size: 17px;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: #444;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .news-meta {
+      font-size: 13px;
+      font-family: 'Oswald', sans-serif;
+      letter-spacing: 0.8px;
+      color: #888;
+      text-transform: uppercase;
+    }
+
+    .news-meta span {
+      color: var(--secondary-color);
+      margin-right: 14px;
+      font-weight: 600;
+    }
+
+    .news-read-more {
+      display: inline-block;
+      margin-top: 12px;
+      font-family: 'Oswald', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      color: var(--primary-color);
+      border-bottom: 2px solid var(--secondary-color);
+      padding-bottom: 2px;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .news-item:hover .news-read-more { color: var(--secondary-color); }
+
+    /* ── responsive ── */
+    @media (max-width: 900px) {
+      .news-item { grid-template-columns: 1fr; gap: 18px; }
+      .news-thumb, .news-thumb-collage { height: 240px; }
+      .news-page { padding: 0 20px 60px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ══ HEADER ══ -->
+  <header>
+    <div class="logo">
+      <a href="index.html">
+        <img src="logo_transparent.png" alt="Horizon Logo" />
+      </a>
+    </div>
+    <nav>
+      <ul>
+        <li>
+          <a href="#">Pathways</a>
+          <ul>
+            <li><a href="arts.html">Arts &amp; Communication</a></li>
+            <li><a href="programming.html">Programming &amp; Software Development</a></li>
+            <li><a href="health.html">Allied Health &amp; Nursing</a></li>
+            <li><a href="excercise.html">Exercise Science</a></li>
+            <li><a href="cybersecurity.html">Cybersecurity</a></li>
+            <li><a href="engineering.html">Engineering &amp; Manufacturing</a></li>
+            <li><a href="business.html">Business &amp; Marketing</a></li>
+            <li><a href="#">More...</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">The Squawk</a>
+          <ul>
+            <li><a href="#">See our students experience through their eyes</a></li>
+          </ul>
+        </li>
+        <li><a href="#">Enroll Now</a></li>
+      </ul>
+    </nav>
+    <div>
+      <button class="donate-btn">Donate</button>
+      <span class="socials">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fas fa-times"></i></a>
+      </span>
+    </div>
+  </header>
+
+  <!-- ══ NEWS SECTION ══ -->
+  <div class="news-page">
+    <div class="news-page-title">NEWS</div>
+
+    <!-- ── Article 1 ── -->
+    <a class="news-item" href="#">
+      <img class="news-thumb" src="placeholderpic.jpg" alt="Students compete at BPA State Conference">
+
+      <div class="news-text">
+        <div class="news-meta">
+          <span>BPA</span> April 10, 2025
+        </div>
+        <h2>Hawks Sweep BPA State Conference — Four Students Advance to Nationals</h2>
+        <p>
+          Horizon Science Academy students dominated the floor at this year's BPA Ohio State Leadership Conference,
+          earning top placements in digital media, business communications, and computer applications. Four
+          students will now represent the school at the national level in May...
+        </p>
+        <div class="news-read-more">Read More →</div>
+      </div>
+    </a>
+
+    <!-- ── Article 2 ── -->
+    <a class="news-item" href="#">
+      <img class="news-thumb" src="placeholderpic.jpg" alt="HOSA Regional Finals">
+
+      <div class="news-text">
+        <div class="news-meta">
+          <span>HOSA</span> March 28, 2025
+        </div>
+        <h2>HOSA Students Earn Top-Four Finishes at Regional Championships</h2>
+        <p>
+          Seven Horizon Allied Health &amp; Nursing pathway students competed at the HOSA Regional Championships
+          earlier this month, with three earning spots at the Ohio State Leadership Conference. The team
+          trained for months under the guidance of their pathway instructors...
+        </p>
+        <div class="news-read-more">Read More →</div>
+      </div>
+    </a>
+
+    <!-- ── Article 3 (collage thumbnail) ── -->
+    <a class="news-item" href="#">
+      <!-- swap the four src values for your real photos -->
+      <div class="news-thumb-collage">
+        <img src="placeholderpic.jpg" alt="Culinary competition 1">
+        <img src="placeholderpic.jpg" alt="Culinary competition 2">
+        <img src="placeholderpic.jpg" alt="Culinary competition 3">
+        <img src="placeholderpic.jpg" alt="Culinary competition 4">
+      </div>
+
+      <div class="news-text">
+        <div class="news-meta">
+          <span>SkillsUSA</span> March 14, 2025
+        </div>
+        <h2>Engineering Pathway Students Take Center Stage at SkillsUSA District Showcase</h2>
+        <p>
+          Two teams from Horizon's Engineering &amp; Manufacturing pathway represented the school with skill
+          and distinction at the SkillsUSA District Showcase on March 9, bringing home honors that earned
+          them a spot at the state competition...
+        </p>
+        <div class="news-read-more">Read More →</div>
+      </div>
+    </a>
+
+    <!-- ── Article 4 ── -->
+    <a class="news-item" href="#">
+      <img class="news-thumb" src="placeholderpic.jpg" alt="Leadership Retreat">
+
+      <div class="news-text">
+        <div class="news-meta">
+          <span>Leadership</span> February 22, 2025
+        </div>
+        <h2>Annual Leadership Retreat Brings Student Org Officers Together</h2>
+        <p>
+          Officers from BPA, HOSA, TSA, SkillsUSA, and the Media Arts Club gathered for Horizon's annual
+          leadership retreat — a weekend of team-building, goal-setting, and planning for the competitions
+          and events ahead. Students left energized and ready...
+        </p>
+        <div class="news-read-more">Read More →</div>
+      </div>
+    </a>
+
+    <!-- ── Article 5 ── -->
+    <a class="news-item" href="#">
+      <img class="news-thumb" src="placeholderpic.jpg" alt="Alumni spotlight">
+
+      <div class="news-text">
+        <div class="news-meta">
+          <span>Alumni</span> January 30, 2025
+        </div>
+        <h2>Accentuating Alumni — Horizon Graduate Lands Role at Leading Tech Firm</h2>
+        <p>
+          When Horizon Science Academy alumni Maya Torres was learning to code in the Programming &amp;
+          Software Development pathway, she probably didn't imagine that path would lead her to a full-stack
+          engineering role at a Fortune 500 company just two years after graduation...
+        </p>
+        <div class="news-read-more">Read More →</div>
+      </div>
+    </a>
+
+  </div><!-- end .news-page -->
+
+  <!-- ══ FOOTER ══ -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-column footer-info-col">
+        <div class="footer-logo">
+          <img src="logo_transparent.png" alt="School Logo">
+        </div>
+        <div class="footer-info">
+          <address>
+            <strong>9th &amp; 10th Grade Building</strong><br>
+            1070 Morse Rd., Columbus, OH 43229<br><br>
+            <strong>11th &amp; 12th Grade Building</strong><br>
+            3692 Corporate Dr., Columbus, OH 43231<br><br>
+            <strong>Phone:</strong> <a href="tel:+16148467616">(614) 846-7616</a><br>
+            <strong>Fax:</strong> (614) 846-7696<br>
+            <strong>Email:</strong> <a href="mailto:info@hsach.org">info@hsach.org</a>
+          </address>
+        </div>
+      </div>
+      <div class="footer-column footer-map">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d48857.48149199368!2d-83.0672414513672!3d40.062191899999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88388b7dcf242fd1%3A0x3856fdf40f8e77da!2sHorizon%20Science%20Academy%20Columbus%20STEM%20High%20School%20(9-10%20Grades)!5e0!3m2!1sen!2sus!4v1759163143735!5m2!1sen!2sus"
+          style="width:500px;margin-right:10px;" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d48845.23514320307!2d-82.99994035136719!3d40.07926649999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88388b54352bdcf9%3A0x3e1b0a97ea22e69c!2sHorizon%20Science%20Academy%20Columbus%20High%20School%20(11-12)!5e0!3m2!1sen!2sus!4v1759163161850!5m2!1sen!2sus"
+          style="width:500px;" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2025 Horizon Science Academy. All rights reserved.
+    </div>
+  </footer>
+
+</body>
+</html>
