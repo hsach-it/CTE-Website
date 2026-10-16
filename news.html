@@ -129,17 +129,230 @@
     }
     .news-item:hover .news-read-more { color: var(--secondary-color); }
 
+    /* Homepage "Read More" links jump to these entries by id (e.g. news.html#career-portfolio).
+       Leave a little space above the entry and briefly highlight it. */
+    .news-item[id] { scroll-margin-top: 20px; }
+    .news-item:target {
+      background: #fff4ef;
+      box-shadow: inset 4px 0 0 var(--secondary-color);
+    }
+
     /* ── responsive ── */
     @media (max-width: 900px) {
       .news-item { grid-template-columns: 1fr; gap: 18px; }
       .news-thumb, .news-thumb-collage { height: 240px; }
       .news-page { padding: 0 20px 60px; }
     }
+
+    /* ══════════════════════════════
+       HI-TECH DESIGN SYSTEM OVERRIDES
+       (match styles.css; original rules above kept for reference)
+    ══════════════════════════════ */
+    .news-page {
+      max-width: 1120px;
+      margin: var(--section-space) auto;
+    }
+
+    .news-page-title {
+      display: block;
+      padding-bottom: 0;
+      margin-bottom: 24px;
+      border-bottom: none;
+      font-family: var(--font-display);
+      font-size: 44px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: var(--primary-color);
+    }
+
+    /* Each story is a row separated by a soft horizontal divider */
+    .news-item {
+      padding: 32px 0;
+      border-bottom: 1px solid var(--border-soft);
+      border-top: none;
+    }
+
+    .news-item:first-of-type {
+      border-top: 1px solid var(--border-soft);
+    }
+
+    .news-item:hover { background: transparent; }
+
+    .news-thumb,
+    .news-thumb-collage {
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-soft);
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+      a.news-item:hover .news-thumb,
+      a.news-item:hover .news-thumb-collage {
+        transform: translateY(-3px);
+        box-shadow: var(--shadow-md);
+      }
+    }
+
+    .news-text h2 {
+      font-family: var(--font-display);
+      font-size: 24px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin-bottom: 10px;
+    }
+
+    .news-text p {
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.7;
+      color: var(--text-muted);
+    }
+
+    /* Category + date row: mono text with an orange pill tag */
+    .news-meta {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 12px;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      color: var(--text-muted);
+    }
+
+    .news-meta span {
+      margin-right: 0;
+      padding: 4px 12px;
+      border: 1px solid rgba(240, 90, 40, 0.22);
+      border-radius: 9999px;
+      background: var(--tint-orange);
+      color: var(--secondary-dark);
+    }
+
+    /* Read More as a tinted secondary pill */
+    .news-read-more {
+      display: inline-flex;
+      margin-top: 4px;
+      padding: 8px 16px;
+      border: 1px solid var(--border-strong);
+      border-radius: 9999px;
+      background: var(--tint-blue);
+      font-family: var(--font-body);
+      font-size: 14px;
+      letter-spacing: 0.02em;
+      text-transform: none;
+      color: var(--primary-color);
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    .news-item:hover .news-read-more {
+      background: var(--primary-color);
+      color: #fff;
+    }
+
+    .news-item:target {
+      background: var(--surface-tint);
+      box-shadow: inset 3px 0 0 var(--secondary-color);
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+
+    @media (min-width: 901px) {
+      .news-item { grid-template-columns: 420px 1fr; gap: 44px; }
+    }
+
+    /* News list sits in a white panel on the tinted page, with a blue accent bar */
+    .news-page {
+      padding: 40px 48px 24px;
+      background: #fff;
+      border: 1px solid var(--border-soft);
+      border-top: 4px solid var(--primary-color);
+      border-radius: var(--radius-md);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .news-item:last-child { border-bottom: none; }
+
+    /* "body" prefix so these win over the older mobile rules further down */
+    @media (max-width: 1180px) {
+      body .news-page { margin-left: 24px; margin-right: 24px; }
+    }
+
+    @media (max-width: 640px) {
+      body .news-page { margin: 24px 16px; padding: 24px 16px 8px; }
+    }
+
+    @media (max-width: 640px) {
+      .news-page-title { font-size: 32px; }
+      .news-text h2 { font-size: 20px; }
+    }
+
+    @media (max-width: 640px) {
+      .news-page { margin: 32px auto; padding: 0 16px 48px; }
+      .news-page-title { font-size: 2.2rem; margin-bottom: 24px; }
+      .news-thumb, .news-thumb-collage { height: 200px; }
+      .news-text h2 { font-size: 1.3rem; }
+      .news-text p { font-size: 16px; }
+    }
   </style>
+  <!-- Site-wide fonts (modern design system) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <!-- Shared mobile menu + accessibility helpers -->
+  <script src="site.js" defer></script>
+  <link rel="icon" type="image/png" href="HSALogo (1).png">
+  <!-- CTE Pathway Assistant (floating chat widget) -->
+  <link rel="stylesheet" href="css/chatbot.css">
+  <script src="js/chatbot.js" defer></script>
 </head>
 <body>
 
   <!-- ══ HEADER ══ -->
+  <!-- Standard site header (same on every page) -->
+  <header>
+    <div class="logo">
+      <a href="index.html">
+        <img src="logo_transparent.png" alt="Horizon Science Academy Columbus High School - Home" />
+      </a>
+    </div>
+    <nav aria-label="Main">
+      <ul>
+        <li>
+          <a href="#">CTE Pathways</a>
+          <ul>
+            <li><a href="arts.html">Arts &amp; Communication</a></li>
+            <li><a href="health.html">Allied Health &amp; Nursing</a></li>
+            <li><a href="programming.html">Programming &amp; Software Development</a></li>
+            <li><a href="excercise.html">Exercise Science</a></li>
+            <li><a href="cybersecurity.html">Cybersecurity</a></li>
+            <li><a href="engineering.html">Engineering &amp; Manufacturing</a></li>
+            <li><a href="business.html">Business &amp; Marketing</a></li>
+            <li><a href="national_orgs.html">National Organizations</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">The Squawk</a>
+          <ul>
+            <li><a href="https://www.thesquawk.biz/" target="_blank" rel="noopener">See our students experience through their eyes</a></li>
+          </ul>
+        </li>
+        <li><a href="https://www.hsach.org/apps/pages/enroll" target="_blank" rel="noopener">Enroll Now</a></li>
+      </ul>
+    </nav>
+    <div class="header-actions">
+      <a class="donate-btn" href="https://www.hsach.org/" target="_blank" rel="noopener">Donate</a>
+      <span class="socials">
+        <a href="https://www.facebook.com/HSAColumbusHigh/" target="_blank" rel="noopener"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.instagram.com/horizoncolumbushs" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+        <a href="https://x.com/hsacolumbushs" target="_blank" rel="noopener"><i class="fas fa-times"></i></a>
+      </span>
+    </div>
+  </header>
+
+  <!-- Original header (replaced by the standard header above; kept for reference)
   <header>
     <div class="logo">
       <a href="index.html">
@@ -179,10 +392,90 @@
       </span>
     </div>
   </header>
+  End of original header -->
 
   <!-- ══ NEWS SECTION ══ -->
   <div class="news-page">
+    <span class="overline">Latest Updates</span>
     <div class="news-page-title">NEWS</div>
+
+    <!-- ── Homepage "Latest News" stories ──
+         The ids below match the "Read More" links on index.html.
+         Only the board meeting story has a full article (homenews.html) so far;
+         when full articles are written for the others, change each <div> to an
+         <a class="news-item" href="..."> and add a "Read More →" line like the board meeting entry. -->
+
+    <a class="news-item" id="board-meeting" href="homenews.html">
+      <img class="news-thumb" src="image1.png" alt="Horizon Science Academy campus">
+      <div class="news-text">
+        <div class="news-meta">
+          <span>Announcement</span> June 9, 2026
+        </div>
+        <h2>June 10th Special Board Meeting Cancelled</h2>
+        <p>
+          Due to unforeseen circumstances, the June 10th Special Board Meeting has been canceled.
+        </p>
+        <div class="news-read-more">Read More →</div>
+      </div>
+    </a>
+
+    <div class="news-item" id="career-portfolio">
+      <img class="news-thumb" src="image2.png" alt="Students at the Career Portfolio Competition">
+      <div class="news-text">
+        <div class="news-meta">
+          <span>Student Achievement</span>
+        </div>
+        <h2>Area Students Honored in Career Portfolio Competition</h2>
+        <p>
+          Five outstanding students have been named winners of the annual Career Portfolio Competition.
+          Each recipient will receive a cash award.
+        </p>
+      </div>
+    </div>
+
+    <div class="news-item" id="real-world-innovation">
+      <img class="news-thumb" src="software.png" alt="Students working on an engineering design project">
+      <div class="news-text">
+        <div class="news-meta">
+          <span>Innovation</span>
+        </div>
+        <h2>Students Turn Classroom Learning into Real-World Innovation</h2>
+        <p>
+          Students recently took on a challenge that mirrors the work of professional engineers:
+          design a system that could protect a life in a crash.
+        </p>
+      </div>
+    </div>
+
+    <div class="news-item" id="cyberpatriot-state">
+      <img class="news-thumb" src="cybersecurity.png" alt="Cybersecurity students at the state competition">
+      <div class="news-text">
+        <div class="news-meta">
+          <span>CTE</span>
+        </div>
+        <h2>Cybersecurity Students Compete at State Level</h2>
+        <p>
+          HSA students earned top honors at the Ohio CyberPatriot competition, showcasing their skills
+          in network defense and ethical hacking.
+        </p>
+      </div>
+    </div>
+
+    <div class="news-item" id="clinical-shadowing">
+      <img class="news-thumb" src="health.png" alt="Allied Health students during clinical shadowing">
+      <div class="news-text">
+        <div class="news-meta">
+          <span>Allied Health</span>
+        </div>
+        <h2>Allied Health Students Complete Clinical Shadowing Program</h2>
+        <p>
+          Students in the Allied Health &amp; Nursing pathway completed their annual clinical shadowing
+          hours at local healthcare facilities this spring.
+        </p>
+      </div>
+    </div>
+
+    <!-- ── Existing news.html stories ── -->
 
     <!-- ── Article 1 ── -->
     <a class="news-item" href="#">
@@ -283,6 +576,36 @@
   </div><!-- end .news-page -->
 
   <!-- ══ FOOTER ══ -->
+  <!-- Standard site footer (same on every page) -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-column footer-info-col">
+        <div class="footer-logo">
+          <img src="logo_transparent.png" alt="Horizon Science Academy Columbus High School">
+        </div>
+        <div class="footer-info">
+          <address>
+            <strong>9th &amp; 10th Grade Building</strong><br>
+            1070 Morse Rd., Columbus, OH 43229<br><br>
+            <strong>11th &amp; 12th Grade Building</strong><br>
+            3692 Corporate Dr., Columbus, OH 43231<br><br>
+            <strong>Phone:</strong> <a href="tel:+16148467616">(614) 846-7616</a><br>
+            <strong>Fax:</strong> (614) 846-7696<br>
+            <strong>Email:</strong> <a href="mailto:info@hsach.org">info@hsach.org</a>
+          </address>
+        </div>
+      </div>
+      <div class="footer-column footer-map">
+        <iframe title="Map: 9th &amp; 10th Grade Building" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d48857.48149199368!2d-83.0672414513672!3d40.062191899999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88388b7dcf242fd1%3A0x3856fdf40f8e77da!2sHorizon%20Science%20Academy%20Columbus%20STEM%20High%20School%20(9-10%20Grades)!5e0!3m2!1sen!2sus!4v1759163143735!5m2!1sen!2sus" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe title="Map: 11th &amp; 12th Grade Building" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d48845.23514320307!2d-82.99994035136719!3d40.07926649999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88388b54352bdcf9%3A0x3e1b0a97ea22e69c!2sHorizon%20Science%20Academy%20Columbus%20High%20School%20(11-12)!5e0!3m2!1sen!2sus!4v1759163161850!5m2!1sen!2sus" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2025 Horizon Science Academy. All rights reserved.
+    </div>
+  </footer>
+
+  <!-- Original footer (replaced by the standard footer above; kept for reference, inner comments removed)
   <footer>
     <div class="footer-top">
       <div class="footer-column footer-info-col">
@@ -312,6 +635,7 @@
       © 2025 Horizon Science Academy. All rights reserved.
     </div>
   </footer>
+  End of original footer -->
 
 </body>
 </html>

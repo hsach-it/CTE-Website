@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Software Development Pathway &ndash; Horizon Science Academy</title>
     <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -27,9 +27,60 @@
   <link rel="icon" href="HSALogo (1).png">
 <link rel="icon" type="image/png" href="HSALogo (1).png">
 <link rel="apple-touch-icon" href="HSALogo (1).png">
+  <!-- Site-wide fonts (modern design system) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <!-- Shared mobile menu + accessibility helpers -->
+  <script src="site.js" defer></script>
+  <!-- CTE Pathway Assistant (floating chat widget) -->
+  <link rel="stylesheet" href="css/chatbot.css">
+  <script src="js/chatbot.js" defer></script>
 </head>
 <body>
-    <header>
+    <!-- Standard site header (same on every page) -->
+  <header>
+    <div class="logo">
+      <a href="index.html">
+        <img src="logo_transparent.png" alt="Horizon Science Academy Columbus High School - Home" />
+      </a>
+    </div>
+    <nav aria-label="Main">
+      <ul>
+        <li>
+          <a href="#">CTE Pathways</a>
+          <ul>
+            <li><a href="arts.html">Arts &amp; Communication</a></li>
+            <li><a href="health.html">Allied Health &amp; Nursing</a></li>
+            <li><a href="programming.html">Programming &amp; Software Development</a></li>
+            <li><a href="excercise.html">Exercise Science</a></li>
+            <li><a href="cybersecurity.html">Cybersecurity</a></li>
+            <li><a href="engineering.html">Engineering &amp; Manufacturing</a></li>
+            <li><a href="business.html">Business &amp; Marketing</a></li>
+            <li><a href="national_orgs.html">National Organizations</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">The Squawk</a>
+          <ul>
+            <li><a href="https://www.thesquawk.biz/" target="_blank" rel="noopener">See our students experience through their eyes</a></li>
+          </ul>
+        </li>
+        <li><a href="https://www.hsach.org/apps/pages/enroll" target="_blank" rel="noopener">Enroll Now</a></li>
+      </ul>
+    </nav>
+    <div class="header-actions">
+      <a class="donate-btn" href="https://www.hsach.org/" target="_blank" rel="noopener">Donate</a>
+      <span class="socials">
+        <a href="https://www.facebook.com/HSAColumbusHigh/" target="_blank" rel="noopener"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.instagram.com/horizoncolumbushs" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+        <a href="https://x.com/hsacolumbushs" target="_blank" rel="noopener"><i class="fas fa-times"></i></a>
+      </span>
+    </div>
+  </header>
+
+  <!-- Original header (replaced by the standard header above; kept for reference)
+  <header>
     <div class="logo">
       <a href = "index.html">
       <img src="logo_transparent.png" alt="Horizon Logo" />
@@ -68,6 +119,7 @@
       </span>
     </div>
   </header>
+  End of original header -->
 
     <!-- HERO SECTION -->
     <div class="hero programming-hero">
@@ -88,6 +140,7 @@
 
     <section class="classes">
         <div> 
+        <span class="overline">Curriculum</span>
         <h2>Classes</h2>
         <p> Students build a <b>strong foundation in Software Development and IT</b> through a carefully designed curriculum. These classes put our stduents aheaded of their peers and facilitate early access to their chosen career fields.</p>
 
@@ -134,6 +187,7 @@
           </div>  
     
       <div> 
+        <span class="overline">Credentials</span>
         <h2>Industry-Recognized Certifications</h2>
         <p> Students graduate with <b>highly valued Programming and IT certifications</b> that boost employability and prepare them for college or direct entry into the tech industry:</p>
 
@@ -200,6 +254,7 @@
 
   <section class="clubs_and_careers">
       <div> 
+        <span class="overline">Get Involved</span>
         <h2> Clubs</h2>
         <p> Students can enrich their learning and professional network through extracurricular activities such as:</p>
 
@@ -214,6 +269,7 @@
       </div> 
     
       <div> 
+        <span class="overline">Career Outlook</span>
         <h2>Careers</h2>
         <p> Graduates of the <b>Software Development Pathway</b> are prepared for <b>high-demand careers</b> in technology, including:</p>
 
@@ -243,6 +299,7 @@
   </section>
 <!-- Swiper container -->
  <div class = "test_head"> 
+    <span class="overline">Student Voices</span>
     <h1 class = "testimonial-heading"> STUDENT TESTIMONIALS</h1>
   </div>
 <div class="swiper mySwiper">
@@ -328,9 +385,39 @@
   </script>
   </section>
 
+  <!-- Standard site footer (same on every page) -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-column footer-info-col">
+        <div class="footer-logo">
+          <img src="logo_transparent.png" alt="Horizon Science Academy Columbus High School">
+        </div>
+        <div class="footer-info">
+          <address>
+            <strong>9th &amp; 10th Grade Building</strong><br>
+            1070 Morse Rd., Columbus, OH 43229<br><br>
+            <strong>11th &amp; 12th Grade Building</strong><br>
+            3692 Corporate Dr., Columbus, OH 43231<br><br>
+            <strong>Phone:</strong> <a href="tel:+16148467616">(614) 846-7616</a><br>
+            <strong>Fax:</strong> (614) 846-7696<br>
+            <strong>Email:</strong> <a href="mailto:info@hsach.org">info@hsach.org</a>
+          </address>
+        </div>
+      </div>
+      <div class="footer-column footer-map">
+        <iframe title="Map: 9th &amp; 10th Grade Building" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d48857.48149199368!2d-83.0672414513672!3d40.062191899999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88388b7dcf242fd1%3A0x3856fdf40f8e77da!2sHorizon%20Science%20Academy%20Columbus%20STEM%20High%20School%20(9-10%20Grades)!5e0!3m2!1sen!2sus!4v1759163143735!5m2!1sen!2sus" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe title="Map: 11th &amp; 12th Grade Building" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d48845.23514320307!2d-82.99994035136719!3d40.07926649999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88388b54352bdcf9%3A0x3e1b0a97ea22e69c!2sHorizon%20Science%20Academy%20Columbus%20High%20School%20(11-12)!5e0!3m2!1sen!2sus!4v1759163161850!5m2!1sen!2sus" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2025 Horizon Science Academy. All rights reserved.
+    </div>
+  </footer>
+
+  <!-- Original footer (replaced by the standard footer above; kept for reference, inner comments removed)
   <footer>
   <div class="footer-top">
-    <!-- Column 1: Logo + Info -->
+    
     <div class="footer-column footer-info-col">
       <div class="footer-logo">
         <img src="logo_transparent.png" alt="School Logo">
@@ -343,14 +430,14 @@
           <strong>11th & 12th Grade Building</strong><br>
           3692 Corporate Dr., Columbus, OH 43231<br><br>
 
-          <strong>Phone:</strong> <a href="tel:+15551234567">(614) 846-7616</a><br>
+          <strong>Phone:</strong> <a href="tel:+16148467616">(614) 846-7616</a><br>
           <strong>Fax:</strong> (614) 846-7696<br>
           <strong>Email:</strong> <a href="mailto:info@hsach.org">info@hsach.org</a>
         </address>
       </div>
     </div>
 
-    <!-- Column 2: Map 1 -->
+    
     <div class="footer-column footer-map">
       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d48857.48149199368!2d-83.0672414513672!3d40.062191899999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88388b7dcf242fd1%3A0x3856fdf40f8e77da!2sHorizon%20Science%20Academy%20Columbus%20STEM%20High%20School%20(9-10%20Grades)!5e0!3m2!1sen!2sus!4v1759163143735!5m2!1sen!2sus" 
       style="width: 500px; margin-right: 10px;" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -364,6 +451,7 @@
     © 2025 Horizon Science Academy. All rights reserved.
   </div>
 </footer>
+  End of original footer -->
 
 </body>
 </html>

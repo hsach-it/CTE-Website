@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>National Organizations</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+<link rel="stylesheet" href="styles.css"/>
+
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
+
+<link rel="icon" href="HSALogo (1).png">
+<link rel="icon" type="image/png" href="HSALogo (1).png">
+<link rel="apple-touch-icon" href="HSALogo (1).png">
+
+<style>
+
+/* =========================
+   INTRO (UNCHANGED TEXT STYLE)
+========================= */
+.offer p {
+    font-size: 22px;
+    font-family: system-ui, sans-serif;
+    width: 80%;
+    margin: 20px auto 0;
+    text-align: center;
+    line-height: 1.6;
+}
+
+/* =========================
+   SECTION LAYOUT (CLEAN)
+========================= */
+.org-section {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-areas:
+        "header header"
+        "desc   right"
+        "main   right";
+
+    gap: 20px 40px;
+    padding: 40px 60px;
+    border-bottom: 2px solid #e5e5e5;
+}
+
+.org-section:last-of-type {
+    border-bottom: none;
+}
+
+.org-section.alt-bg {
+    background-color: lightblue;
+}
+
+/* =========================
+   HEADER (UNCHANGED)
+========================= */
+.org-header {
+    grid-area: header;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.org-header img {
+    height: 70px;
+}
+
+.org-title {
+    font-size: 38px;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+/* =========================
+   TEXT (UNCHANGED)
+========================= */
+.org-desc {
+    grid-area: desc;
+    font-size: 20px;
+    font-family: system-ui, sans-serif;
+    line-height: 1.6;
+    max-width: 900px;
+    margin-bottom: 0;
+}
+
+/* =========================
+   BIG IMAGE (LEFT UNDER TEXT)
+========================= */
+.org-section > .photo-card {
+    grid-area: main;
+    height: 500px;
+}
+
+/* =========================
+   RIGHT SIDE IMAGES
+========================= */
+.org-photos.big-left {
+    grid-area: right;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    margin-top: -10px;
+}
+
+/* small images */
+.org-photos.big-left .photo-card {
+    height: 330px;
+}
+
+/* =========================
+   PHOTO CARD BASE
+========================= */
+.photo-card {
+    background: #dde4f0;
+    border-radius: 6px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.12);
+}
+
+.photo-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.photo-card:hover img {
+    transform: scale(1.08);
+}
+.photo-card {
+    transition: transform 0.3s ease;
+}
+
+.photo-card:hover {
+    transform: translateY(-5px);
+}
+.photo-card img {
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    transform: translateZ(0); /* helps smooth GPU rendering */
+    will-change: transform;
+}
+
+.photo-card .ph {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #c7d4ed, #a8bce0);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    opacity: 0.8;
+}
+
+/* =========================
+   RESPONSIVE (tablet & mobile)
+========================= */
+/* Hover lift/zoom only for mouse users, so photos don't get "stuck" zoomed on touch */
+@media (hover: none) {
+    .photo-card:hover,
+    .photo-card:hover img {
+        transform: none;
+    }
+}
+
+@media (max-width: 1000px) {
+    .offer p {
+        width: auto;
+        margin: 16px 24px 0;
+        font-size: 19px;
+    }
+
+    /* Stack: heading, text, big photo, then the two smaller photos side by side */
+    .org-section {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+            "header"
+            "desc"
+            "main"
+            "right";
+        padding: 32px 24px;
+        gap: 20px;
+    }
+
+    .org-section > .photo-card {
+        height: 340px;
+    }
+
+    .org-photos.big-left {
+        flex-direction: row;
+        margin-top: 0;
+    }
+
+    .org-photos.big-left .photo-card {
+        flex: 1;
+        height: 220px;
+    }
+
+    .org-title {
+        font-size: 30px;
+        line-height: 1.2;
+    }
+
+    .org-desc {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 640px) {
+    .offer p {
+        margin: 14px 16px 0;
+        font-size: 17px;
+    }
+
+    .org-section {
+        padding: 28px 16px;
+    }
+
+    .org-header {
+        gap: 14px;
+    }
+
+    .org-header img {
+        height: 48px;
+    }
+
+    .org-title {
+        font-size: 24px;
+    }
+
+    .org-desc {
+        font-size: 17px;
+    }
+
+    .org-section > .photo-card {
+        height: 240px;
+    }
+
+    .org-photos.big-left .photo-card {
+        height: 150px;
+    }
+}
+
+/* =========================
+   HI-TECH DESIGN SYSTEM OVERRIDES
+   (match styles.css; original rules above kept for reference)
+========================= */
+.offer p {
+    max-width: 880px;
+    margin: 48px auto 0;
+    padding: 0 24px;
+    font-family: var(--font-body);
+    font-size: 20px;
+    line-height: 1.7;
+    color: var(--text-muted);
+}
+
+/* Extra "tag" row for the overline pill above each organization */
+.org-section {
+    grid-template-areas:
+        "tag    tag"
+        "header header"
+        "desc   right"
+        "main   right";
+    gap: 24px 48px;
+    padding: var(--section-space) max(40px, calc((100% - var(--content-width)) / 2));
+    border-bottom: 1px solid var(--border-soft);
+}
+
+.org-section > .overline {
+    grid-area: tag;
+    margin-bottom: -12px;
+}
+
+/* Alternate light-orange and light-blue bands instead of the flat "lightblue" */
+.org-section {
+    background: var(--tint-blue-strong);
+}
+
+.org-section.alt-bg {
+    background: var(--tint-orange-soft);
+}
+
+/* Logo on a small white tile, title in the display font */
+.org-header img {
+    height: 72px;
+    padding: 10px 14px;
+    background: #fff;
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-sm);
+}
+
+.org-title {
+    font-family: var(--font-display);
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+}
+
+.org-desc {
+    font-family: var(--font-body);
+    font-size: 18px;
+    line-height: 1.7;
+    color: var(--text-muted);
+}
+
+/* Photos become rounded floating panels */
+.photo-card {
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-md);
+}
+
+.org-photos.big-left .photo-card {
+    border-radius: var(--radius-md);
+}
+
+@media (max-width: 1000px) {
+    .org-section {
+        grid-template-areas:
+            "tag"
+            "header"
+            "desc"
+            "main"
+            "right";
+        gap: 20px;
+        padding: var(--section-space) 24px;
+    }
+
+    .offer p {
+        margin-top: 32px;
+        font-size: 18px;
+    }
+
+    .org-title { font-size: 30px; }
+}
+
+@media (max-width: 640px) {
+    .org-section { padding: var(--section-space) 16px; }
+    .org-header img { height: 52px; padding: 6px 10px; }
+    .org-title { font-size: 24px; }
+    .org-desc { font-size: 17px; }
+    .offer p { margin-top: 24px; padding: 0 16px; font-size: 17px; }
+}
+
+</style>
+  <!-- Site-wide fonts (modern design system) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <!-- Shared mobile menu + accessibility helpers -->
+  <script src="site.js" defer></script>
+  <!-- CTE Pathway Assistant (floating chat widget) -->
+  <link rel="stylesheet" href="css/chatbot.css">
+  <script src="js/chatbot.js" defer></script>
+</head>
+
+<body>
+
+<!-- Standard site header (same on every page) -->
+  <header>
+    <div class="logo">
+      <a href="index.html">
+        <img src="logo_transparent.png" alt="Horizon Science Academy Columbus High School - Home" />
+      </a>
+    </div>
+    <nav aria-label="Main">
+      <ul>
+        <li>
+          <a href="#">CTE Pathways</a>
+          <ul>
+            <li><a href="arts.html">Arts &amp; Communication</a></li>
+            <li><a href="health.html">Allied Health &amp; Nursing</a></li>
+            <li><a href="programming.html">Programming &amp; Software Development</a></li>
+            <li><a href="excercise.html">Exercise Science</a></li>
+            <li><a href="cybersecurity.html">Cybersecurity</a></li>
+            <li><a href="engineering.html">Engineering &amp; Manufacturing</a></li>
+            <li><a href="business.html">Business &amp; Marketing</a></li>
+            <li><a href="national_orgs.html">National Organizations</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">The Squawk</a>
+          <ul>
+            <li><a href="https://www.thesquawk.biz/" target="_blank" rel="noopener">See our students experience through their eyes</a></li>
+          </ul>
+        </li>
+        <li><a href="https://www.hsach.org/apps/pages/enroll" target="_blank" rel="noopener">Enroll Now</a></li>
+      </ul>
+    </nav>
+    <div class="header-actions">
+      <a class="donate-btn" href="https://www.hsach.org/" target="_blank" rel="noopener">Donate</a>
+      <span class="socials">
+        <a href="https://www.facebook.com/HSAColumbusHigh/" target="_blank" rel="noopener"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.instagram.com/horizoncolumbushs" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+        <a href="https://x.com/hsacolumbushs" target="_blank" rel="noopener"><i class="fas fa-times"></i></a>
+      </span>
+    </div>
+  </header>
+
+  <!-- Original header (replaced by the standard header above; kept for reference)
+  <header>
+    <div class="logo">
+        <a href="index.html">
+            <img src="logo_transparent.png" alt="Horizon Logo"/>
+        </a>
+    </div>
+
+    <nav>
+        <ul>
+            <li><a href="#">Pathways</a></li>
+            <li><a href="#">The Squawk</a></li>
+            <li><a href="#">Enroll Now</a></li>
+        </ul>
+    </nav>
+
+    <button class="donate-btn">Donate</button>
+</header>
+  End of original header -->
+
+<!-- HERO -->
+<div class="hero nationalOrgs-hero">
+    <h1>NATIONAL ORGANIZATIONS</h1>
+</div>
+
+<!-- INTRO (UNCHANGED TEXT) -->
+<section class="offer">
+    <div class="subheading">Our National Organizations</div>
+    <p>
+        At Horizon, we participate in a multitude of national organizations in which we have succeeded at the state and national levels. Our students compete alongside peers from across the country, building leadership, technical skills, and professional networks that last a lifetime.
+    </p>
+</section>
+
+<!-- ========================= BPA ========================= -->
+<section class="org-section alt-bg">
+
+    <span class="overline">Business &amp; IT</span>
+
+    <div class="org-header">
+        <img src="bpa_logo.png" alt="BPA Logo">
+        <h2 class="org-title">BPA – Business Professionals of America</h2>
+    </div>
+
+    <p class="org-desc">
+        In our first year participating, we succeeded at both regional and state levels — and our students are currently competing at the national level. BPA prepares students for careers in business, finance, management, and IT through competitive events and leadership development.
+    </p>
+
+    <!-- BIG PHOTO (LEFT) -->
+    <div class="photo-card">
+        <img src="20260116_113800.jpg" alt="BPA photo">
+    </div>
+
+    <!-- RIGHT PHOTOS -->
+    <div class="org-photos big-left">
+        <div class="photo-card">
+            <img src = "bpaNOp1.jpg" alt="BPA photo">
+        </div>
+        <div class="photo-card">
+            <img src="PXL_20260224_171935196.jpg" alt="BPA photo">
+        </div>
+    </div>
+
+</section>
+
+<!-- ========================= HOSA ========================= -->
+<section class="org-section">
+
+    <span class="overline">Health Science</span>
+
+    <div class="org-header">
+        <img src="hosa_logo.png" alt="HOSA Logo">
+        <h2 class="org-title">HOSA – Health Occupations Students of America</h2>
+    </div>
+
+    <p class="org-desc">
+        HOSA empowers students pursuing careers in healthcare and biomedical sciences. Our members compete in health science events, participate in community service, and develop the professional skills needed for success in the medical field.
+    </p>
+
+    <div class="photo-card">
+        <img src="hosa_photo1.jpg" alt="HOSA photo">
+    </div>
+
+    <div class="org-photos big-left">
+        <div class="photo-card"><img src="hosa_photo2.jpg"></div>
+        <div class="photo-card"><img src="hosa_photo3.jpg"></div>
+    </div>
+
+</section>
+
+<!-- ========================= SKILLSUSA ========================= -->
+<section class="org-section alt-bg">
+
+    <span class="overline">Trade &amp; Technical</span>
+
+    <div class="org-header">
+        <img src="SkillsUSALogo.svg" alt="SkillsUSA Logo">
+        <h2 class="org-title">SkillsUSA</h2>
+    </div>
+
+    <p class="org-desc">
+        SkillsUSA is a national organization serving students in technical, skilled, and service occupations. Our students compete in areas ranging from engineering and manufacturing to cybersecurity and health, demonstrating real-world expertise on a national stage.
+    </p>
+
+    <div class="photo-card">
+        <img src="skillsusa_photo1.jpg" alt="SkillsUSA photo">
+    </div>
+
+    <div class="org-photos big-left">
+        <div class="photo-card"><img src="skillsusa_photo2.jpg"></div>
+        <div class="photo-card"><img src="skillsusa_photo3.jpg"></div>
+    </div>
+
+</section>
+
+
+  <!-- Standard site footer (same on every page) -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-column footer-info-col">
+        <div class="footer-logo">
+          <img src="logo_transparent.png" alt="Horizon Science Academy Columbus High School">
+        </div>
+        <div class="footer-info">
+          <address>
+            <strong>9th &amp; 10th Grade Building</strong><br>
+            1070 Morse Rd., Columbus, OH 43229<br><br>
+            <strong>11th &amp; 12th Grade Building</strong><br>
+            3692 Corporate Dr., Columbus, OH 43231<br><br>
+            <strong>Phone:</strong> <a href="tel:+16148467616">(614) 846-7616</a><br>
+            <strong>Fax:</strong> (614) 846-7696<br>
+            <strong>Email:</strong> <a href="mailto:info@hsach.org">info@hsach.org</a>
+          </address>
+        </div>
+      </div>
+      <div class="footer-column footer-map">
+        <iframe title="Map: 9th &amp; 10th Grade Building" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d48857.48149199368!2d-83.0672414513672!3d40.062191899999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88388b7dcf242fd1%3A0x3856fdf40f8e77da!2sHorizon%20Science%20Academy%20Columbus%20STEM%20High%20School%20(9-10%20Grades)!5e0!3m2!1sen!2sus!4v1759163143735!5m2!1sen!2sus" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe title="Map: 11th &amp; 12th Grade Building" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d48845.23514320307!2d-82.99994035136719!3d40.07926649999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88388b54352bdcf9%3A0x3e1b0a97ea22e69c!2sHorizon%20Science%20Academy%20Columbus%20High%20School%20(11-12)!5e0!3m2!1sen!2sus!4v1759163161850!5m2!1sen!2sus" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2025 Horizon Science Academy. All rights reserved.
+    </div>
+  </footer>
+
+</body>
+</html>
