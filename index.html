@@ -21,8 +21,59 @@
 <link rel="icon" type="image/png" href="HSALogo (1).png">
 <link rel="apple-touch-icon" href="HSALogo (1).png">
 
+  <!-- Site-wide fonts (modern design system) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+  <!-- Shared mobile menu + accessibility helpers -->
+  <script src="site.js" defer></script>
+  <!-- CTE Pathway Assistant (floating chat widget) -->
+  <link rel="stylesheet" href="css/chatbot.css">
+  <script src="js/chatbot.js" defer></script>
 </head>
 <body>
+  <!-- Standard site header (same on every page) -->
+  <header>
+    <div class="logo">
+      <a href="index.html">
+        <img src="logo_transparent.png" alt="Horizon Science Academy Columbus High School - Home" />
+      </a>
+    </div>
+    <nav aria-label="Main">
+      <ul>
+        <li>
+          <a href="#">CTE Pathways</a>
+          <ul>
+            <li><a href="arts.html">Arts &amp; Communication</a></li>
+            <li><a href="health.html">Allied Health &amp; Nursing</a></li>
+            <li><a href="programming.html">Programming &amp; Software Development</a></li>
+            <li><a href="excercise.html">Exercise Science</a></li>
+            <li><a href="cybersecurity.html">Cybersecurity</a></li>
+            <li><a href="engineering.html">Engineering &amp; Manufacturing</a></li>
+            <li><a href="business.html">Business &amp; Marketing</a></li>
+            <li><a href="national_orgs.html">National Organizations</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">The Squawk</a>
+          <ul>
+            <li><a href="https://www.thesquawk.biz/" target="_blank" rel="noopener">See our students experience through their eyes</a></li>
+          </ul>
+        </li>
+        <li><a href="https://www.hsach.org/apps/pages/enroll" target="_blank" rel="noopener">Enroll Now</a></li>
+      </ul>
+    </nav>
+    <div class="header-actions">
+      <a class="donate-btn" href="https://www.hsach.org/" target="_blank" rel="noopener">Donate</a>
+      <span class="socials">
+        <a href="https://www.facebook.com/HSAColumbusHigh/" target="_blank" rel="noopener"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.instagram.com/horizoncolumbushs" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+        <a href="https://x.com/hsacolumbushs" target="_blank" rel="noopener"><i class="fas fa-times"></i></a>
+      </span>
+    </div>
+  </header>
+
+  <!-- Original header (replaced by the standard header above; kept for reference)
   <header>
     <div class="logo">
       <a href = "index.html">
@@ -63,6 +114,7 @@
       </span>
     </div>
   </header>
+  End of original header -->
 
   <div class="hero">
     <div class="video-overlay"></div>
@@ -155,7 +207,93 @@
 
   </div>
 
-  <!-- News Section -->
+  <!-- News Section (refined) -->
+  <section class="news-section" aria-labelledby="newsHeading">
+    <div class="news-section-inner">
+      <div class="news-section-header">
+        <span class="overline">Campus Updates</span>
+        <h2 class="news-heading" id="newsHeading">LATEST NEWS</h2>
+        <p class="news-subheading">Stories, achievements, and announcements from our CTE community.</p>
+      </div>
+
+      <div class="news-carousel-wrapper">
+        <button type="button" class="news-arrow news-arrow-left" id="newsPrev" aria-label="Previous news">&#8249;</button>
+        <div class="news-carousel-track-container">
+          <div class="news-carousel-track" id="newsTrack">
+
+            <article class="news-card">
+              <div class="news-card-img-wrapper">
+                <img src="image1.png" alt="Horizon Science Academy campus" />
+              </div>
+              <div class="news-card-body">
+                <span class="news-tag">Announcement</span>
+                <h3>June 10th Special Board Meeting Cancelled</h3>
+                <p>Due to unforeseen circumstances, the June 10th Special Board Meeting has been canceled.</p>
+                <a href="homenews.html" class="news-read-more">Read More <span aria-hidden="true">→</span></a>
+              </div>
+            </article>
+
+            <article class="news-card">
+              <div class="news-card-img-wrapper">
+                <img src="image2.png" alt="Students at the Career Portfolio Competition" />
+              </div>
+              <div class="news-card-body">
+                <span class="news-tag">Student Achievement</span>
+                <h3>Area Students Honored in Career Portfolio Competition</h3>
+                <p>Five outstanding students have been named winners of the annual Career Portfolio Competition. Each recipient will receive a cash award.</p>
+                <a href="news.html#career-portfolio" class="news-read-more">Read More <span aria-hidden="true">→</span></a>
+              </div>
+            </article>
+
+            <article class="news-card">
+              <div class="news-card-img-wrapper">
+                <img src="software.png" alt="Students working on an engineering design project" />
+              </div>
+              <div class="news-card-body">
+                <span class="news-tag">Innovation</span>
+                <h3>Students Turn Classroom Learning into Real-World Innovation</h3>
+                <p>Students recently took on a challenge that mirrors the work of professional engineers: design a system that could protect a life in a crash.</p>
+                <a href="news.html#real-world-innovation" class="news-read-more">Read More <span aria-hidden="true">→</span></a>
+              </div>
+            </article>
+
+            <article class="news-card">
+              <div class="news-card-img-wrapper">
+                <img src="cybersecurity.png" alt="Cybersecurity students at the state competition" />
+              </div>
+              <div class="news-card-body">
+                <span class="news-tag">CTE</span>
+                <h3>Cybersecurity Students Compete at State Level</h3>
+                <p>HSA students earned top honors at the Ohio CyberPatriot competition, showcasing their skills in network defense and ethical hacking.</p>
+                <a href="news.html#cyberpatriot-state" class="news-read-more">Read More <span aria-hidden="true">→</span></a>
+              </div>
+            </article>
+
+            <article class="news-card">
+              <div class="news-card-img-wrapper">
+                <img src="health.png" alt="Allied Health students during clinical shadowing" />
+              </div>
+              <div class="news-card-body">
+                <span class="news-tag">Allied Health</span>
+                <h3>Allied Health Students Complete Clinical Shadowing Program</h3>
+                <p>Students in the Allied Health &amp; Nursing pathway completed their annual clinical shadowing hours at local healthcare facilities this spring.</p>
+                <a href="news.html#clinical-shadowing" class="news-read-more">Read More <span aria-hidden="true">→</span></a>
+              </div>
+            </article>
+
+          </div>
+        </div>
+        <button type="button" class="news-arrow news-arrow-right" id="newsNext" aria-label="Next news">&#8250;</button>
+      </div>
+      <div class="news-dots" id="newsDots" role="group" aria-label="Choose news slide"></div>
+
+      <div class="news-view-all-wrapper">
+        <a href="news.html" class="news-view-all">View All News</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Original News Section (replaced by refined version above; kept for reference)
 <div class="news-section">
   <h2 class="news-heading">LATEST NEWS</h2>
   <div class="news-carousel-wrapper">
@@ -229,6 +367,7 @@
   </div>
   <div class="news-dots" id="newsDots"></div>
 </div>
+  End of Original News Section -->
 
 
   
@@ -243,6 +382,7 @@
 
         <div class="dashboard-card">
           <div class="card-content" style="padding: 10px;  align-items: left;justify-content: center;">
+            <span class="overline">Our School</span>
             <h1> WELCOME</h1>
             <br>
             <h2> Welcome to Horizon Science Academy Columbus High School!</h2>
@@ -255,6 +395,7 @@
 
         <div class="dashboard-card">
           <div class="card-content" style="padding: 10px;  align-items: right; justify-content: center; margin-left: 285px;">
+            <span class="overline">Our Mission</span>
             <h1 style="text-align: center;"> ABOUT US</h1>
             <br>
             <p style="text-align: right;"> The Mission of our school is to provide a safe and enriching learning environment where the whole student is nurtured and developed. Our teachers and administrators pledge to support the academic and emotional wellbeing of each and every student. Students will leave our school prepared with skills and knowledge that will give them advantages throughout their future educational and life experiences.</p>
@@ -269,6 +410,30 @@
     </div>
   </div>
 
+  <!-- Student Learning Gallery (redesigned) -->
+  <section class="student-gallery" aria-labelledby="galleryHeading">
+    <div class="student-gallery-inner">
+      <div class="student-gallery-header">
+        <span class="overline">Student Life</span>
+        <h2 class="student-gallery-heading" id="galleryHeading">SEE WHAT OUR STUDENTS ARE LEARNING</h2>
+        <p class="student-gallery-subheading">Hands-on projects and real-world experiences from across our CTE pathways.</p>
+      </div>
+      <div class="student-gallery-grid">
+        <figure class="gallery-card"><img src="20260116_113800.jpg" alt="" loading="lazy"></figure>
+        <figure class="gallery-card"><img src="20260116_113903.jpg" alt="" loading="lazy"></figure>
+        <figure class="gallery-card"><img src="20260116_113905.jpg" alt="" loading="lazy"></figure>
+        <figure class="gallery-card"><img src="20260204_122313.jpg" alt="" loading="lazy"></figure>
+        <figure class="gallery-card"><img src="20260226_124736.jpg" alt="" loading="lazy"></figure>
+        <figure class="gallery-card"><img src="PXL_20260223_183235381.jpg" alt="" loading="lazy"></figure>
+        <figure class="gallery-card"><img src="PXL_20260223_183237802.jpg" alt="" loading="lazy"></figure>
+        <figure class="gallery-card"><img src="PXL_20260209_155535784.jpg" alt="" loading="lazy"></figure>
+        <figure class="gallery-card"><img src="PXL_20260209_155530749.jpg" alt="" loading="lazy"></figure>
+        <figure class="gallery-card"><img src="PXL_20260209_154028148.jpg" alt="" loading="lazy"></figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- Original image gallery (replaced by the redesigned section above; kept for reference)
   <div class = "image_gallery">
     <h2> SEE WHAT OUR STUDENTS ARE LEARNING...</h2>
     <div class="gallery_grid">
@@ -284,9 +449,11 @@
       <img src= "PXL_20260209_154028148.jpg" alt="">
     </div>
   </div>
+  End of original image gallery -->
 
     <!-- Sponsor Carousel Section -->
   <section class="sponsor-carousel-section">
+    <span class="overline">Industry Partners</span>
     <h2>OUR PARTNERS</h2>
       <div class="sponsor-carousel">
           <div class="carousel-track">
@@ -311,6 +478,9 @@
   </section>
 
   <script>
+    /* Chart code disabled: Chart.js is not loaded on this page (see the commented-out
+       <script> in <head>) and there are no #pieChart / #barChart canvases, so this threw
+       "Chart is not defined" and stopped the news carousel script below from running.
     // Pie Chart
     new Chart(document.getElementById("pieChart"), {
       type: 'pie',
@@ -358,8 +528,99 @@
         }
       }
     });
+    End of disabled Chart code */
 
-    // News Carousel
+    // News Carousel (refined): moves one card at a time, shows 3/2/1 cards
+    // depending on screen width (set by --news-visible in styles.css),
+    // and supports arrows, dots, keyboard, and touch swipe.
+    (function () {
+      const track = document.getElementById('newsTrack');
+      if (!track) return;
+      const container = track.parentElement;
+      const cards = Array.from(track.querySelectorAll('.news-card'));
+      const dotsContainer = document.getElementById('newsDots');
+      const prevBtn = document.getElementById('newsPrev');
+      const nextBtn = document.getElementById('newsNext');
+      let current = 0;
+
+      function visibleCount() {
+        const value = parseInt(getComputedStyle(track).getPropertyValue('--news-visible'), 10);
+        return value > 0 ? value : 3;
+      }
+
+      function maxIndex() {
+        return Math.max(0, cards.length - visibleCount());
+      }
+
+      function buildDots() {
+        dotsContainer.innerHTML = '';
+        for (let i = 0; i <= maxIndex(); i++) {
+          const dot = document.createElement('button');
+          dot.type = 'button';
+          dot.className = 'news-dot';
+          dot.setAttribute('aria-label', 'Go to news slide ' + (i + 1));
+          dot.addEventListener('click', () => goTo(i));
+          dotsContainer.appendChild(dot);
+        }
+      }
+
+      function goTo(index) {
+        current = Math.max(0, Math.min(index, maxIndex()));
+        const gap = parseFloat(getComputedStyle(track).columnGap) || 0;
+        const step = cards[0].offsetWidth + gap;
+        track.style.transform = 'translateX(-' + (current * step) + 'px)';
+
+        dotsContainer.querySelectorAll('.news-dot').forEach((dot, i) => {
+          dot.classList.toggle('active', i === current);
+          dot.setAttribute('aria-current', i === current ? 'true' : 'false');
+        });
+        prevBtn.disabled = current === 0;
+        nextBtn.disabled = current === maxIndex();
+
+        // Keep links in off-screen cards out of the keyboard tab order
+        cards.forEach((card, i) => {
+          const onScreen = i >= current && i < current + visibleCount();
+          card.setAttribute('aria-hidden', onScreen ? 'false' : 'true');
+          card.querySelectorAll('a').forEach(a => {
+            if (onScreen) a.removeAttribute('tabindex');
+            else a.setAttribute('tabindex', '-1');
+          });
+        });
+      }
+
+      prevBtn.addEventListener('click', () => goTo(current - 1));
+      nextBtn.addEventListener('click', () => goTo(current + 1));
+
+      container.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') goTo(current - 1);
+        if (e.key === 'ArrowRight') goTo(current + 1);
+      });
+
+      let touchStartX = null;
+      container.addEventListener('touchstart', (e) => {
+        touchStartX = e.touches[0].clientX;
+      }, { passive: true });
+      container.addEventListener('touchend', (e) => {
+        if (touchStartX === null) return;
+        const dx = e.changedTouches[0].clientX - touchStartX;
+        if (Math.abs(dx) > 40) goTo(current + (dx < 0 ? 1 : -1));
+        touchStartX = null;
+      });
+
+      let lastVisible = visibleCount();
+      window.addEventListener('resize', () => {
+        if (visibleCount() !== lastVisible) {
+          lastVisible = visibleCount();
+          buildDots();
+        }
+        goTo(current);
+      });
+
+      buildDots();
+      goTo(0);
+    })();
+
+    /* Original News Carousel (replaced by refined version above; kept for reference)
 const _newsTrack = document.getElementById('newsTrack');
 const _newsDotsContainer = document.getElementById('newsDots');
 const _newsCards = Array.from(_newsTrack.querySelectorAll('.news-card'));
@@ -390,12 +651,43 @@ function goToNewsSlide(index) {
 function slideNews(dir) {
   goToNewsSlide(_newsCurrentSlide + dir);
 }
+    End of Original News Carousel */
   </script>
   
 
+  <!-- Standard site footer (same on every page) -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-column footer-info-col">
+        <div class="footer-logo">
+          <img src="logo_transparent.png" alt="Horizon Science Academy Columbus High School">
+        </div>
+        <div class="footer-info">
+          <address>
+            <strong>9th &amp; 10th Grade Building</strong><br>
+            1070 Morse Rd., Columbus, OH 43229<br><br>
+            <strong>11th &amp; 12th Grade Building</strong><br>
+            3692 Corporate Dr., Columbus, OH 43231<br><br>
+            <strong>Phone:</strong> <a href="tel:+16148467616">(614) 846-7616</a><br>
+            <strong>Fax:</strong> (614) 846-7696<br>
+            <strong>Email:</strong> <a href="mailto:info@hsach.org">info@hsach.org</a>
+          </address>
+        </div>
+      </div>
+      <div class="footer-column footer-map">
+        <iframe title="Map: 9th &amp; 10th Grade Building" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d48857.48149199368!2d-83.0672414513672!3d40.062191899999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88388b7dcf242fd1%3A0x3856fdf40f8e77da!2sHorizon%20Science%20Academy%20Columbus%20STEM%20High%20School%20(9-10%20Grades)!5e0!3m2!1sen!2sus!4v1759163143735!5m2!1sen!2sus" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe title="Map: 11th &amp; 12th Grade Building" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d48845.23514320307!2d-82.99994035136719!3d40.07926649999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88388b54352bdcf9%3A0x3e1b0a97ea22e69c!2sHorizon%20Science%20Academy%20Columbus%20High%20School%20(11-12)!5e0!3m2!1sen!2sus!4v1759163161850!5m2!1sen!2sus" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2025 Horizon Science Academy. All rights reserved.
+    </div>
+  </footer>
+
+  <!-- Original footer (replaced by the standard footer above; kept for reference, inner comments removed)
   <footer>
   <div class="footer-top">
-    <!-- Column 1: Logo + Info -->
+    
     <div class="footer-column footer-info-col">
       <div class="footer-logo">
         <img src="logo_transparent.png" alt="School Logo">
@@ -408,14 +700,14 @@ function slideNews(dir) {
           <strong>11th & 12th Grade Building</strong><br>
           3692 Corporate Dr., Columbus, OH 43231<br><br>
 
-          <strong>Phone:</strong> <a href="tel:+15551234567">(614) 846-7616</a><br>
+          <strong>Phone:</strong> <a href="tel:+16148467616">(614) 846-7616</a><br>
           <strong>Fax:</strong> (614) 846-7696<br>
           <strong>Email:</strong> <a href="mailto:info@hsach.org">info@hsach.org</a>
         </address>
       </div>
     </div>
 
-    <!-- Column 2: Map 1 -->
+    
     <div class="footer-column footer-map">
       <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d48857.48149199368!2d-83.0672414513672!3d40.062191899999995!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88388b7dcf242fd1%3A0x3856fdf40f8e77da!2sHorizon%20Science%20Academy%20Columbus%20STEM%20High%20School%20(9-10%20Grades)!5e0!3m2!1sen!2sus!4v1759163143735!5m2!1sen!2sus" 
       style="width: 500px; margin-right: 10px;" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -429,6 +721,7 @@ function slideNews(dir) {
     © 2025 Horizon Science Academy. All rights reserved.
   </div>
 </footer>
+  End of original footer -->
 
 </body>
 </html>
