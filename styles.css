@@ -502,6 +502,7 @@ footer {
   box-sizing: border-box;
 }
 
+/* Original image gallery styles (replaced by STUDENT LEARNING GALLERY at the end of this file; kept for reference)
 .image_gallery {
   text-align: center;
   padding: 40px 20px;
@@ -530,7 +531,7 @@ footer {
   margin: auto;
 }
 
-/* Main effect */
+   Main effect
 .gallery_grid img {
   --brightness: 0.75;
   transition: flex var(--transition), filter var(--transition);
@@ -548,6 +549,7 @@ footer {
   --grayscale: 0;
   flex: var(--magnifier);
 }
+End of original image gallery styles */
 
 
 /*Carasoil */
@@ -1109,6 +1111,7 @@ a:hover {
         footer a:hover { text-decoration: underline; }
 
         /* ===== NEWS SECTION ===== */
+/* Original NEWS SECTION styles (replaced by the refined styles at the end of this file; kept for reference)
 .news-section {
   padding: 50px 40px 60px;
   background-color: #fff;
@@ -1257,4 +1260,2848 @@ a:hover {
   background: var(--primary-color);
   width: 28px;
   border-radius: 5px;
+}
+End of Original NEWS SECTION styles */
+
+/* ===== NEWS SECTION (refined) ===== */
+/* Homepage "Latest News" carousel. Card rules are scoped to .news-section
+   so they don't affect news.html, which has its own .news-read-more styles. */
+.news-section {
+  background-color: var(--light-color);
+  padding: 64px 40px 56px;
+  margin-top: 55px;
+}
+
+.news-section-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+.news-section-header {
+  text-align: center;
+  margin-bottom: 36px;
+}
+
+.news-section .news-heading {
+  font-size: 48px;
+  font-weight: 900;
+  letter-spacing: 3px;
+  color: var(--primary-color);
+  margin-bottom: 0;
+}
+
+/* Short orange accent bar under the heading */
+.news-section .news-heading::after {
+  content: "";
+  display: block;
+  width: 72px;
+  height: 4px;
+  margin: 14px auto 0;
+  background: var(--secondary-color);
+  border-radius: 2px;
+}
+
+.news-subheading {
+  margin-top: 16px;
+  font-size: 17px;
+  color: #555;
+  line-height: 1.5;
+}
+
+.news-section .news-carousel-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.news-section .news-carousel-track-container {
+  overflow: hidden;
+  flex: 1;
+  /* Room for the card shadow and hover lift so they aren't clipped */
+  padding: 8px 4px 14px;
+  margin: -8px -4px -14px;
+}
+
+.news-section .news-carousel-track {
+  --news-visible: 3;  /* read by the carousel script in index.html */
+  display: flex;
+  gap: 24px;
+  transition: transform 0.45s ease;
+}
+
+.news-section .news-card {
+  flex: 0 0 calc((100% - 24px * (var(--news-visible) - 1)) / var(--news-visible));
+  min-width: 0;
+  background: #fff;
+  border-radius: 8px;
+  border-top: 4px solid var(--primary-color);
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(22, 72, 154, 0.10);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.news-section .news-card:hover,
+.news-section .news-card:focus-within {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 24px rgba(22, 72, 154, 0.18);
+  border-top-color: var(--secondary-color);
+}
+
+.news-section .news-card-img-wrapper {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  height: auto;
+  overflow: hidden;
+  background: #dde3f0;
+}
+
+.news-section .news-card-img-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.4s ease;
+}
+
+.news-section .news-card:hover .news-card-img-wrapper img {
+  transform: scale(1.04);
+}
+
+.news-section .news-card-body {
+  padding: 22px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.news-section .news-tag {
+  display: inline-block;
+  width: fit-content;
+  background-color: rgba(240, 90, 40, 0.12);  /* tint of --secondary-color */
+  color: #c4441a;                              /* darker orange for readable contrast */
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  border-radius: 999px;
+  margin-bottom: 14px;
+}
+
+.news-section .news-card-body h3 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--primary-color);
+  margin-bottom: 10px;
+  /* Keep card heights even: max 2 lines of title */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.news-section .news-card-body p {
+  font-family: 'Inter', sans-serif;
+  font-size: 15px;
+  line-height: 1.65;
+  color: #444;
+  margin-bottom: 20px;
+  /* Max 3 lines of summary */
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.news-section .news-read-more {
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  width: fit-content;
+  font-family: 'Poppins', sans-serif;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--secondary-color);
+  text-decoration: none;
+}
+
+.news-section .news-read-more span {
+  transition: transform 0.2s ease;
+}
+
+.news-section .news-read-more:hover {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
+.news-section .news-read-more:hover span {
+  transform: translateX(4px);
+}
+
+.news-section .news-arrow {
+  background: var(--primary-color);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  font-size: 28px;
+  line-height: 1;
+  padding-bottom: 3px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  box-shadow: 0 3px 8px rgba(22, 72, 154, 0.25);
+  transition: background 0.2s ease, opacity 0.2s ease;
+}
+
+.news-section .news-arrow:hover:not(:disabled) {
+  background: var(--secondary-color);
+}
+
+.news-section .news-arrow:disabled {
+  opacity: 0.35;
+  cursor: default;
+  box-shadow: none;
+}
+
+.news-section .news-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 28px;
+}
+
+.news-section .news-dot {
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  border: none;
+  border-radius: 5px;
+  background: #c5cde0;
+  cursor: pointer;
+  transition: width 0.3s ease, background 0.3s ease;
+}
+
+/* Invisible larger tap area around each small dot */
+.news-section .news-dot {
+  position: relative;
+}
+
+.news-section .news-dot::after {
+  content: "";
+  position: absolute;
+  inset: -12px -4px;
+}
+
+.news-section .news-dot.active {
+  width: 28px;
+  background: var(--primary-color);
+}
+
+.news-view-all-wrapper {
+  text-align: center;
+  margin-top: 32px;
+}
+
+.news-view-all {
+  display: inline-block;
+  background: var(--primary-color);
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  padding: 13px 32px;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+
+.news-view-all:hover {
+  background: var(--secondary-color);
+  color: #fff;
+  text-decoration: none;
+}
+
+/* Visible keyboard focus for all news controls */
+.news-section a:focus-visible,
+.news-section button:focus-visible {
+  outline: 3px solid var(--secondary-color);
+  outline-offset: 3px;
+}
+
+/* Tablet: 2 cards */
+@media (max-width: 1000px) {
+  .news-section { padding: 52px 24px 48px; }
+  .news-section .news-carousel-track { --news-visible: 2; }
+  .news-section .news-heading { font-size: 40px; }
+}
+
+/* Mobile: 1 card, smaller arrows */
+@media (max-width: 640px) {
+  .news-section { padding: 44px 16px 40px; }
+  .news-section .news-carousel-track { --news-visible: 1; }
+  .news-section .news-carousel-wrapper { gap: 8px; }
+  .news-section .news-heading { font-size: 32px; letter-spacing: 2px; }
+  .news-subheading { font-size: 15px; }
+  .news-section .news-arrow { width: 44px; height: 44px; font-size: 24px; }
+  .news-section .news-card-body { padding: 18px 18px 20px; }
+}
+
+/* Respect users who prefer less motion */
+@media (prefers-reduced-motion: reduce) {
+  .news-section .news-carousel-track,
+  .news-section .news-card,
+  .news-section .news-card-img-wrapper img {
+    transition: none;
+  }
+}
+
+/* ===== STUDENT LEARNING GALLERY ===== */
+/* "See What Our Students Are Learning" image grid on index.html */
+.student-gallery {
+  background-color: #fff;
+  padding: 72px 40px 64px;
+}
+
+.student-gallery-inner {
+  max-width: 1240px;
+  margin: 0 auto;
+}
+
+.student-gallery-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.student-gallery-heading {
+  font-size: 48px;
+  font-weight: 900;
+  letter-spacing: 3px;
+  line-height: 1.15;
+  color: var(--primary-color);
+}
+
+/* Orange accent bar, matching the Latest News heading */
+.student-gallery-heading::after {
+  content: "";
+  display: block;
+  width: 72px;
+  height: 4px;
+  margin: 14px auto 0;
+  background: var(--secondary-color);
+  border-radius: 2px;
+}
+
+.student-gallery-subheading {
+  margin-top: 16px;
+  font-size: 17px;
+  line-height: 1.5;
+  color: #555;
+}
+
+/* 5 equal columns x 2 rows on desktop; every tile is the same size */
+.student-gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+}
+
+.gallery-card {
+  position: relative;
+  margin: 0;
+  aspect-ratio: 4 / 5;
+  border-radius: 14px;
+  overflow: hidden;              /* keeps the zoomed image inside the rounded corners */
+  background: #dde3f0;           /* soft blue-grey while images load */
+  box-shadow: 0 4px 14px rgba(22, 72, 154, 0.10);
+  transition: all 0.3s ease;
+}
+
+.gallery-card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all 0.3s ease;
+}
+
+/* Thin blue-to-orange bar that slides in along the bottom on hover */
+.gallery-card::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: all 0.3s ease;
+}
+
+/* Hover zoom only on devices with a real mouse/trackpad, so touch screens
+   never get a "stuck" zoomed image after tapping. */
+@media (hover: hover) and (pointer: fine) {
+  .gallery-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 28px rgba(22, 72, 154, 0.20);
+  }
+
+  .gallery-card:hover img {
+    transform: scale(1.08);
+  }
+
+  .gallery-card:hover::after {
+    transform: scaleX(1);
+  }
+}
+
+/* Tablet: 2 columns of larger tiles */
+@media (max-width: 1000px) {
+  .student-gallery { padding: 56px 24px 48px; }
+  .student-gallery-heading { font-size: 40px; }
+  .student-gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+  }
+  .gallery-card { aspect-ratio: 4 / 3; }
+}
+
+/* Mobile: still 2 columns, but tighter spacing and square-ish tiles */
+@media (max-width: 640px) {
+  .student-gallery { padding: 44px 16px 40px; }
+  .student-gallery-heading { font-size: 30px; letter-spacing: 2px; }
+  .student-gallery-subheading { font-size: 15px; }
+  .student-gallery-grid { gap: 12px; }
+  .gallery-card {
+    aspect-ratio: 1 / 1;
+    border-radius: 12px;
+  }
+}
+
+/* Respect users who prefer less motion */
+@media (prefers-reduced-motion: reduce) {
+  .gallery-card,
+  .gallery-card img,
+  .gallery-card::after {
+    transition: none;
+  }
+}
+
+/* =====================================================================
+   RESPONSIVE DESIGN & ACCESSIBILITY
+   Site-wide fixes for tablet and mobile. Breakpoints:
+     1280px  small laptops
+     1024px  tablets  -> header switches to the menu button (see site.js)
+      640px  phones
+   Many pages set fixed sizes with inline style="" attributes, so a few
+   rules below use !important to override them on small screens only.
+   ===================================================================== */
+
+/* ---------- Global safety nets ---------- */
+img,
+video,
+iframe {
+  max-width: 100%;
+}
+
+/* Stop any remaining wide element from creating sideways scrolling */
+html {
+  overflow-x: clip;
+}
+
+/* Darker shade of --secondary-color for small orange text on white,
+   so it meets WCAG AA contrast (4.5:1). */
+:root {
+  --secondary-dark: #c4441a;
+}
+
+/* Visible keyboard focus everywhere */
+a:focus-visible,
+button:focus-visible,
+[role="button"]:focus-visible {
+  outline: 3px solid var(--secondary-color);
+  outline-offset: 3px;
+}
+
+/* ---------- Header & navigation ---------- */
+/* Desktop: dropdowns also open on keyboard focus and on click (site.js adds .open) */
+nav ul li:focus-within > ul,
+nav ul li.open > ul {
+  display: block;
+}
+
+.nav-toggle {
+  display: none;            /* only shown on tablet/mobile */
+}
+
+.nav-socials {
+  display: none;            /* copy of the social icons for the mobile menu */
+}
+
+@media (max-width: 1024px) {
+  header.has-mobile-nav {
+    height: auto;
+    min-height: 76px;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 12px 20px;
+  }
+
+  header.has-mobile-nav .logo {
+    margin-right: auto;
+  }
+
+  header.has-mobile-nav .logo img {
+    height: 52px;
+    display: block;
+  }
+
+  /* Donate + social icons stay in the top bar next to the menu button */
+  header.has-mobile-nav > div:not(.logo) {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  header.has-mobile-nav .donate-btn {
+    font-size: 16px;
+    padding: 10px 16px;
+    min-height: 44px;
+  }
+
+  /* Menu (hamburger) button */
+  header.has-mobile-nav .nav-toggle {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 46px;
+    height: 46px;
+    padding: 0 11px;
+    border: 2px solid var(--primary-color);
+    border-radius: 8px;
+    background: #fff;
+    cursor: pointer;
+  }
+
+  header.has-mobile-nav .nav-toggle span {
+    display: block;
+    height: 3px;
+    border-radius: 2px;
+    background: var(--primary-color);
+    transition: transform 0.25s ease, opacity 0.25s ease;
+  }
+
+  /* Turn the three lines into an X when open */
+  header.nav-open .nav-toggle span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+  header.nav-open .nav-toggle span:nth-child(2) { opacity: 0; }
+  header.nav-open .nav-toggle span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+  /* The nav becomes a full-width panel under the top bar */
+  header.has-mobile-nav nav {
+    display: none;
+    order: 10;
+    flex-basis: 100%;
+    margin: 0;
+    border-top: 1px solid #e3e8f2;
+  }
+
+  header.nav-open nav {
+    display: block;
+  }
+
+  header.has-mobile-nav nav > ul {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+  }
+
+  header.has-mobile-nav nav ul li a {
+    padding: 14px 8px;
+    min-height: 48px;
+    border-bottom: 1px solid #e3e8f2;
+  }
+
+  /* Small arrow on items that have a submenu */
+  header.has-mobile-nav nav > ul > li > a[aria-haspopup]::after {
+    content: "▾";
+    float: right;
+    transition: transform 0.25s ease;
+  }
+
+  header.has-mobile-nav nav > ul > li.open > a[aria-haspopup]::after {
+    transform: rotate(180deg);
+  }
+
+  /* Submenus open by tap (site.js), not hover, and sit inline */
+  header.has-mobile-nav nav ul li:hover ul,
+  header.has-mobile-nav nav ul li:focus-within > ul {
+    display: none;
+  }
+
+  header.has-mobile-nav nav ul li.open > ul {
+    display: block;
+  }
+
+  header.has-mobile-nav nav ul li ul {
+    position: static;
+    min-width: 0;
+    border: none;
+    background: var(--light-color);
+  }
+
+  header.has-mobile-nav nav ul li ul li a {
+    padding-left: 24px;
+    font-size: 17px;
+    white-space: normal;
+  }
+}
+
+@media (max-width: 640px) {
+  header.has-mobile-nav {
+    padding: 10px 16px;
+    gap: 8px;
+  }
+
+  header.has-mobile-nav .logo img {
+    height: 44px;
+  }
+
+  /* Social icons move into the menu panel on phones */
+  header.has-mobile-nav > div:not(.logo) .socials {
+    display: none;
+  }
+
+  header.has-mobile-nav .nav-socials {
+    display: block;
+    padding: 12px 0 4px;
+  }
+
+  header.has-mobile-nav .nav-socials .socials {
+    display: flex;
+    gap: 8px;
+  }
+
+  header.has-mobile-nav .nav-socials .socials a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    min-height: 0;
+    margin: 0;
+    padding: 0;
+    border: none;
+    font-size: 24px;
+  }
+
+  header.has-mobile-nav .donate-btn {
+    font-size: 15px;
+    padding: 10px 14px;
+  }
+}
+
+@media (max-width: 380px) {
+  header.has-mobile-nav .logo img {
+    height: 38px;
+  }
+}
+
+/* ---------- Homepage hero video ---------- */
+@media (max-width: 1024px) {
+  /* Only the homepage hero (pathway heroes have their own *-hero class) */
+  .hero:not([class*="-hero"]) {
+    height: auto;
+    aspect-ratio: 16 / 9;
+  }
+}
+
+/* ---------- Orange banner headings ---------- */
+@media (max-width: 640px) {
+  .subheading {
+    font-size: 19px;
+    line-height: 1.35;
+    padding: 14px 16px;
+  }
+}
+
+/* ---------- Homepage pathway cards ---------- */
+.card-grid-pathways .card {
+  width: min(350px, 100%);
+}
+
+@media (max-width: 640px) {
+  .card-grid-pathways {
+    margin: 24px 16px 0;
+    gap: 16px;
+  }
+
+  .card-grid-pathways .card {
+    width: 100%;
+  }
+}
+
+/* Touch screens can't hover: show each card's short description by default */
+@media (hover: none) {
+  .card-grid-pathways .card .overlay {
+    height: auto;
+    padding: 12px 14px;
+    background: linear-gradient(to top, rgba(22, 72, 154, 0.95), rgba(22, 72, 154, 0.75));
+  }
+
+  .card-grid-pathways .card .overlay h3 {
+    font-size: 20px;
+  }
+
+  .card-grid-pathways .card .overlay p {
+    display: none;   /* keep cards short; title + photo are enough on phones */
+  }
+}
+
+/* ---------- Homepage Welcome / About grid ---------- */
+/* Remove inline offsets that push the About text off the card on smaller laptops */
+@media (max-width: 1280px) {
+  .dashboard-card .card-content {
+    margin-left: 0 !important;
+    padding: 24px 40px !important;
+  }
+
+  .dashboard-card:nth-child(3) .card-content {
+    align-items: flex-end !important;
+  }
+
+  .card-content p {
+    width: auto;
+    max-width: 450px;
+  }
+
+  .card-content .stat a {
+    margin-left: 0 !important;
+  }
+}
+
+@media (max-width: 1000px) {
+  .dashboard-grid {
+    grid-template-columns: 1fr;
+    grid-auto-rows: auto;
+  }
+
+  .dashboard-card:has(img) {
+    height: 260px;
+  }
+
+  .dashboard-card .card-content,
+  .dashboard-card:nth-child(3) .card-content {
+    align-items: flex-start !important;
+    padding: 36px 24px !important;
+  }
+
+  .dashboard-card .card-content h1,
+  .dashboard-card .card-content p {
+    text-align: left !important;
+  }
+
+  .card-content p {
+    max-width: none;
+    font-size: 16px;
+    line-height: 1.65;
+  }
+}
+
+@media (max-width: 640px) {
+  .dashboard-grid {
+    margin-top: 32px;
+  }
+
+  .dashboard-card:has(img) {
+    height: 200px;
+  }
+
+  .dashboard-card .card-content,
+  .dashboard-card:nth-child(3) .card-content {
+    padding: 28px 16px !important;
+  }
+
+  .dashboard-card .card-content h1 {
+    font-size: 28px;
+  }
+
+  .dashboard-card .card-content h2 {
+    font-size: 21px;
+    line-height: 1.3;
+  }
+}
+
+/* ---------- Partner logo carousel ---------- */
+@media (max-width: 640px) {
+  .sponsor-carousel-section {
+    padding: 32px 16px;
+  }
+
+  .sponsor-carousel-section h2 {
+    font-size: 30px;
+    letter-spacing: 2px;
+  }
+
+  .carousel-track {
+    gap: 32px;
+  }
+
+  .carousel-track img {
+    height: 56px;
+  }
+}
+
+/* ---------- Footer ---------- */
+@media (max-width: 1280px) {
+  .footer-top {
+    flex-wrap: wrap;
+  }
+
+  .footer-map {
+    display: flex;
+    gap: 12px;
+    flex-basis: 100%;
+    height: 240px;
+  }
+
+  .footer-map iframe {
+    width: auto !important;
+    flex: 1;
+    margin: 0 !important;
+  }
+}
+
+@media (max-width: 1024px) {
+  .footer-info-col {
+    max-width: none;
+  }
+
+  .footer-logo img {
+    max-width: 280px;
+    margin: 0 auto 15px;
+  }
+}
+
+@media (max-width: 640px) {
+  footer {
+    padding: 28px 16px;
+  }
+
+  .footer-map {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .footer-map iframe {
+    width: 100% !important;
+    flex: none;
+    height: 220px;
+  }
+
+  /* Bigger tap targets for the phone and email links */
+  .footer-info a {
+    display: inline-block;
+    padding: 6px 0;
+  }
+}
+
+/* ---------- Pathway pages ---------- */
+@media (max-width: 1000px) {
+  /* Hero banners: keep the title inside the image */
+  .hero[class*="-hero"] {
+    height: 240px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    padding: 0 16px 24px;
+  }
+
+  .hero[class*="-hero"] h1 {
+    margin-top: 0;
+    font-size: 34px;
+    line-height: 1.15;
+    text-align: center;
+  }
+
+  .offer p {
+    width: auto;
+    margin: 16px 24px 0;
+    font-size: 19px;
+    line-height: 1.6;
+  }
+
+  /* Two-column sections stack into one column */
+  .classes,
+  .certifications,
+  .clubs_and_careers {
+    grid-template-columns: 1fr;
+    row-gap: 24px;
+    padding: 28px 24px;
+  }
+
+  .classes > *,
+  .certifications > *,
+  .clubs_and_careers > * {
+    grid-column: 1 / -1 !important;   /* overrides inline "grid-column: span 2" */
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+
+  .classes div,
+  .certifications div,
+  .clubs_and_careers div {
+    margin-left: 0;
+  }
+
+  .classes h2,
+  .certifications h2,
+  .clubs_and_careers h2 {
+    font-size: 32px;
+  }
+
+  .classes p,
+  .classes ul,
+  .certifications p,
+  .certifications ul,
+  .clubs_and_careers p,
+  .clubs_and_careers ul {
+    font-size: 18px;
+    line-height: 1.6;
+  }
+
+  .classes ul,
+  .certifications ul,
+  .clubs_and_careers ul {
+    margin-left: 24px;
+  }
+
+  .certifications-list {
+    margin-left: 0 !important;
+    list-style: none;
+  }
+
+  /* Embedded YouTube videos scale to the screen width */
+  .classes iframe,
+  .certifications iframe,
+  .clubs_and_careers iframe {
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 16 / 9;
+    margin: 12px 0 0 !important;
+  }
+
+  /* Certification badges */
+  .cert_seals {
+    padding: 8px 0 !important;
+    margin-top: 0 !important;
+    gap: 16px !important;
+    align-items: center;
+    justify-items: center;
+  }
+
+  .cert_seals img {
+    width: 100%;
+    max-width: 180px;
+    height: auto;
+    margin-top: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Club logos */
+  .club-logos {
+    height: auto;
+    gap: 20px !important;
+    align-items: center;
+  }
+
+  .club-logos img {
+    width: auto;
+    max-width: 40%;
+    height: auto;
+    max-height: 110px;
+    padding: 0 !important;
+  }
+
+  /* Expand/collapse headers: bigger tap area */
+  .dropdown-header {
+    min-height: 48px;
+  }
+
+  .certifications-list .dropdown-header {
+    font-size: 18px;
+    padding: 10px 0;
+  }
+
+  /* Student testimonials */
+  .testimonial-heading {
+    font-size: 26px;
+  }
+
+  .testimonial-content {
+    width: auto;
+    max-width: 100%;
+    padding: 24px 16px 40px;
+    background-size: 110px auto;
+  }
+
+  .profile-img {
+    width: 220px;
+    height: 220px;
+  }
+
+  .testimonial h3 {
+    font-size: 24px;
+  }
+
+  .testimonial p {
+    font-size: 19px;
+    padding-top: 16px;
+  }
+
+  .swiper-button-next,
+  .swiper-button-prev {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+  }
+}
+
+@media (max-width: 700px) {
+  .testimonial-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    /* Move the Hawks logo below the quote so it doesn't cover the text */
+    padding-bottom: 110px;
+    background-position: center bottom 20px;
+    background-size: 80px auto;
+  }
+
+  .testimonial .text {
+    text-align: center;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero[class*="-hero"] {
+    height: 200px;
+  }
+
+  .hero[class*="-hero"] h1 {
+    font-size: 26px;
+  }
+
+  .offer p {
+    margin: 14px 16px 0;
+    font-size: 17px;
+  }
+
+  .classes,
+  .certifications,
+  .clubs_and_careers {
+    padding: 24px 16px;
+  }
+
+  .classes h2,
+  .certifications h2,
+  .clubs_and_careers h2 {
+    font-size: 28px;
+  }
+
+  .classes p,
+  .classes ul,
+  .certifications p,
+  .certifications ul,
+  .clubs_and_careers p,
+  .clubs_and_careers ul {
+    font-size: 17px;
+  }
+
+  .profile-img {
+    width: 160px;
+    height: 160px;
+  }
+
+  .testimonial p {
+    font-size: 17px;
+  }
+}
+
+/* ---------- Contrast: small orange text on white ---------- */
+.card-content a,
+.news-section .news-read-more,
+.dropdown-header {
+  color: var(--secondary-dark);
+}
+
+/* =====================================================================
+   HI-TECH DESIGN SYSTEM  (site-wide visual overhaul)
+   Builds on the school palette: --primary-color (blue) and
+   --secondary-color (orange), plus deeper shades and light tints of them.
+   These rules come last, so they override the earlier styles through the
+   cascade. The earlier rules are left in place for reference.
+   Sections:
+     1. Tokens        6. Homepage sections     11. Testimonials
+     2. Base type     7. Cards & panels        12. Footer
+     3. Overlines     8. Pathway hero          13. Responsive adjustments
+     4. Buttons       9. Pathway sections
+     5. Header/nav   10. Badges & logos
+   ===================================================================== */
+
+/* ---------- 1. Tokens ---------- */
+:root {
+  --primary-deep: #0f3577;              /* deeper shade of --primary-color */
+  --navy-ink: #0d1b3e;                  /* darkest brand blue: footer, headings */
+  --text: #1f2a44;
+  --text-muted: #4f5a73;
+  --surface: #ffffff;
+  --surface-tint: #f4f7fc;              /* very light tint of --primary-color */
+  --tint-blue: rgba(22, 72, 154, 0.08);
+  --tint-orange: rgba(240, 90, 40, 0.10);
+  --border-soft: rgba(22, 72, 154, 0.12);
+  --border-strong: rgba(22, 72, 154, 0.24);
+  --shadow-sm: 0 1px 2px rgba(13, 27, 62, 0.05), 0 4px 12px rgba(13, 27, 62, 0.06);
+  --shadow-md: 0 2px 4px rgba(13, 27, 62, 0.05), 0 12px 28px rgba(13, 27, 62, 0.10);
+  --shadow-lg: 0 4px 8px rgba(13, 27, 62, 0.06), 0 22px 48px rgba(13, 27, 62, 0.16);
+  --radius-sm: 12px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --font-display: 'Poppins', 'Inter', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'Cascadia Code', Consolas, monospace;
+  --section-space: 96px;                /* vertical space between sections */
+  --content-width: 1240px;
+}
+
+@media (max-width: 1000px) {
+  :root { --section-space: 72px; }
+}
+
+@media (max-width: 640px) {
+  :root { --section-space: 56px; }
+}
+
+/* ---------- 2. Base typography ---------- */
+body {
+  font-family: var(--font-body);
+  color: var(--text);
+  line-height: 1.6;
+  background-color: var(--surface);
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  line-height: 1.2;
+}
+
+p, li {
+  line-height: 1.6;
+}
+
+/* Shared section-title style (homepage + pathway pages) */
+.news-section .news-heading,
+.student-gallery-heading,
+.sponsor-carousel-section h2,
+.testimonial-heading {
+  font-family: var(--font-display);
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1.15;
+  color: var(--primary-color);
+}
+
+/* The orange bars under headings are replaced by overline pills */
+.news-section .news-heading::after,
+.student-gallery-heading::after {
+  display: none;
+}
+
+.news-subheading,
+.student-gallery-subheading {
+  color: var(--text-muted);
+  margin-top: 12px;
+}
+
+/* ---------- 3. Overline pills (small labels above section titles) ---------- */
+.overline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  margin-bottom: 14px;
+  padding: 6px 14px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--primary-color);
+  background: var(--tint-blue);
+  border: 1px solid var(--border-soft);
+  border-radius: 9999px;
+}
+
+/* Small orange "status light" dot */
+.overline::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--secondary-color);
+  box-shadow: 0 0 0 3px var(--tint-orange);
+}
+
+/* ---------- 4. Buttons ---------- */
+/* Primary CTAs: solid pill, bold text, soft shadow, lift on hover */
+.donate-btn,
+.news-view-all {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 9999px;
+  font-family: var(--font-body);
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: #fff;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.2s ease;
+}
+
+/* Donate uses a deeper shade of the school orange so white text passes WCAG AA */
+.donate-btn {
+  background: var(--secondary-dark);
+  padding: 11px 24px;
+  font-size: 16px;
+  box-shadow: 0 6px 16px rgba(196, 68, 26, 0.28);
+}
+
+.donate-btn:hover {
+  background: #a93a15;
+  color: #fff;
+  text-decoration: none;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(196, 68, 26, 0.34);
+}
+
+.news-view-all {
+  background: var(--primary-color);
+  padding: 14px 32px;
+  font-size: 16px;
+  box-shadow: 0 6px 16px rgba(22, 72, 154, 0.26);
+}
+
+.news-view-all:hover {
+  background: var(--primary-deep);
+  color: #fff;
+  text-decoration: none;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px rgba(22, 72, 154, 0.32);
+}
+
+.donate-btn:active,
+.news-view-all:active {
+  transform: translateY(0);
+}
+
+/* Secondary buttons: outlined or lightly tinted pills */
+.card-content .stat a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 20px;
+  border: 1.5px solid var(--border-strong);
+  border-radius: 9999px;
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--primary-color);
+  background: #fff;
+  text-decoration: none;
+  transition: transform 0.2s ease, background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.card-content .stat a:hover {
+  background: var(--tint-blue);
+  border-color: var(--primary-color);
+  text-decoration: none;
+  transform: translateY(-2px);
+}
+
+.news-section .news-read-more {
+  padding: 8px 16px;
+  border: 1px solid rgba(240, 90, 40, 0.22);
+  border-radius: 9999px;
+  background: var(--tint-orange);
+  color: var(--secondary-dark);
+  font-family: var(--font-body);
+  font-size: 14px;
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.news-section .news-read-more:hover {
+  background: var(--secondary-dark);
+  border-color: var(--secondary-dark);
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+/* ---------- 5. Header & navigation ---------- */
+header {
+  position: relative;
+  z-index: 100;
+  height: 84px;
+  padding: 0 32px;
+  background: #fff;
+  border-bottom: 1px solid var(--border-soft);
+  box-shadow: 0 1px 12px rgba(13, 27, 62, 0.04);
+}
+
+.logo img {
+  height: 58px;
+  display: block;
+}
+
+nav ul {
+  gap: 4px;
+}
+
+nav ul li a {
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 600;
+  padding: 10px 16px;
+  border-radius: 9999px;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+nav > ul > li > a:hover,
+nav > ul > li.open > a {
+  background: var(--tint-blue);
+  text-decoration: none;
+}
+
+/* Dropdowns become floating panels */
+nav ul li ul {
+  top: calc(100% + 10px);
+  min-width: 300px;
+  padding: 8px;
+  background: #fff;
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Invisible bridge so the menu doesn't close while moving the mouse into it */
+nav ul li ul::before {
+  content: "";
+  position: absolute;
+  top: -12px;
+  left: 0;
+  right: 0;
+  height: 12px;
+}
+
+nav ul li ul li a {
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-weight: 500;
+}
+
+/* Blue tint instead of the old orange hover (better text contrast) */
+nav ul li ul li a:hover {
+  background-color: var(--tint-blue);
+  color: var(--primary-deep);
+  text-decoration: none;
+}
+
+/* Current page (set by site.js) */
+nav ul li ul li a[aria-current="page"] {
+  background: var(--tint-blue);
+  color: var(--primary-deep);
+  box-shadow: inset 3px 0 0 var(--secondary-color);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.socials {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.socials a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  margin-left: 0;
+  font-size: 18px;
+  border-radius: 50%;
+  transition: background-color 0.2s ease;
+}
+
+.socials a:hover {
+  background: var(--tint-blue);
+  text-decoration: none;
+}
+
+/* ---------- 6. Homepage sections ---------- */
+/* Orange banner under the hero: gradient band, bold white text */
+.subheading {
+  margin-top: 0;
+  padding: 20px 24px;
+  background: linear-gradient(90deg, var(--secondary-color), var(--secondary-dark));
+  color: #fff;
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.news-section {
+  padding: var(--section-space) 40px;
+  margin-top: var(--section-space);
+  background: var(--surface-tint);
+  border-top: 1px solid var(--border-soft);
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.news-section-inner,
+.student-gallery-inner {
+  max-width: var(--content-width);
+}
+
+.news-section-header,
+.student-gallery-header {
+  margin-bottom: 48px;
+}
+
+.dashboard-wrapper {
+  padding: var(--section-space) 40px 0;
+}
+
+.dashboard-grid {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  gap: 24px;
+  grid-auto-rows: minmax(400px, auto);
+}
+
+.student-gallery {
+  padding: var(--section-space) 40px 0;   /* Partners section below supplies the gap */
+}
+
+.sponsor-carousel-section {
+  padding: var(--section-space) 0 0;
+  margin-bottom: 0;
+}
+
+.sponsor-carousel-section h2 {
+  margin-bottom: 36px;
+}
+
+.sponsor-carousel {
+  padding: 24px 0;
+  background: var(--surface-tint);
+  border-top: 1px solid var(--border-soft);
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.carousel-track {
+  gap: 20px;
+}
+
+/* Partner logos sit on small white tiles */
+.carousel-track img {
+  height: 84px;
+  padding: 14px 24px;
+  object-fit: contain;
+  background: #fff;
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ---------- 7. Cards & floating panels ---------- */
+/* Homepage pathway cards
+   (container + card rules replaced by the PATHWAY GRID section at the end of this file; kept for reference)
+.card-grid-pathways {
+  max-width: var(--content-width);
+  margin: 56px auto 0;
+  padding: 0 40px;
+  gap: 24px;
+}
+
+.card-grid-pathways .card {
+  height: 240px;
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+End of replaced pathway card rules */
+
+.card-grid-pathways .card .overlay {
+  height: 64px;
+  padding: 16px 20px;
+  background: linear-gradient(to top, rgba(13, 35, 80, 0.96), rgba(22, 72, 154, 0.84));
+}
+
+.card-grid-pathways .card .overlay h3 {
+  font-size: 20px;
+}
+
+.card-grid-pathways .card .overlay p {
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .card-grid-pathways .card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg);
+  }
+}
+
+/* Latest News cards: inset photo inside a floating panel */
+.news-section .news-card {
+  border: 1px solid var(--border-soft);
+  border-top: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+.news-section .news-card:hover,
+.news-section .news-card:focus-within {
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-md);
+}
+
+.news-section .news-card-img-wrapper {
+  width: auto;
+  margin: 10px 10px 0;
+  border-radius: var(--radius-md);
+}
+
+.news-section .news-card-body {
+  padding: 22px 24px 26px;
+}
+
+.news-section .news-card-body h3 {
+  font-size: 19px;
+  letter-spacing: -0.01em;
+}
+
+.news-section .news-card-body p {
+  color: var(--text-muted);
+}
+
+/* Category tags: small mono pills, orange variant of .overline */
+.news-section .news-tag {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  padding: 5px 12px;
+  border: 1px solid rgba(240, 90, 40, 0.22);
+  background: var(--tint-orange);
+  color: var(--secondary-dark);
+}
+
+/* Carousel arrows: white circles that fill with blue on hover */
+.news-section .news-arrow {
+  background: #fff;
+  color: var(--primary-color);
+  border: 1px solid var(--border-strong);
+  box-shadow: var(--shadow-sm);
+  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
+}
+
+.news-section .news-arrow:hover:not(:disabled) {
+  background: var(--primary-color);
+  color: #fff;
+  transform: translateY(-2px);
+}
+
+/* Gallery tiles */
+.gallery-card {
+  border: 1px solid var(--border-soft);
+  border-radius: 20px;
+  box-shadow: var(--shadow-sm);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .gallery-card:hover {
+    box-shadow: var(--shadow-lg);
+  }
+}
+
+/* Welcome / About: four rounded tiles with a gap instead of a flat checkerboard */
+.dashboard-card {
+  border-radius: var(--radius-lg);
+}
+
+.dashboard-card:has(img) {
+  box-shadow: var(--shadow-md);
+}
+
+.dashboard-grid .dashboard-card .card-content {
+  margin: 0 !important;
+  padding: 48px 56px !important;
+  align-items: flex-start !important;
+  justify-content: center !important;
+  background: #fff;
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+/* The <br> spacers are replaced by margins below */
+.dashboard-grid .card-content br {
+  display: none;
+}
+
+.dashboard-grid .dashboard-card .card-content h1 {
+  margin: 0;
+  font-size: 40px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-align: left !important;
+}
+
+.dashboard-grid .dashboard-card .card-content h2 {
+  margin-top: 10px;
+  font-size: 21px;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+.dashboard-grid .dashboard-card .card-content p {
+  width: auto;
+  max-width: 60ch;
+  margin-top: 16px;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--text-muted);
+  text-align: left !important;
+}
+
+.dashboard-grid .card-content .stat {
+  margin-top: 24px;
+}
+
+.dashboard-grid .card-content .stat a {
+  margin-left: 0 !important;
+}
+
+/* ---------- 8. Pathway & National Orgs hero banners ---------- */
+.hero[class*="-hero"] {
+  isolation: isolate;
+  height: 340px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 0 40px 44px;
+}
+
+/* Navy gradient so the white title is readable on any photo */
+.hero[class*="-hero"]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(180deg, rgba(13, 27, 62, 0.10) 0%, rgba(13, 27, 62, 0.78) 100%);
+}
+
+.hero[class*="-hero"] h1 {
+  position: relative;
+  z-index: 2;
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(30px, 4.2vw, 52px);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  line-height: 1.15;
+  text-align: center;
+  color: #fff;
+  -webkit-text-stroke: 0;
+  -webkit-text-fill-color: #fff;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.35);
+}
+
+/* ---------- 9. Pathway page sections ---------- */
+.offer p {
+  width: auto;
+  max-width: 880px;
+  margin: 48px auto 0;
+  padding: 0 24px;
+  font-family: var(--font-body);
+  font-size: 20px;
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+
+/* Each content section becomes a floating panel */
+.classes,
+.certifications,
+.clubs_and_careers {
+  width: min(var(--content-width), calc(100% - 48px));
+  margin: var(--section-space) auto 0;
+  padding: 48px;
+  column-gap: 48px;
+  align-items: start;
+  background: #fff;
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Light blue-tinted panels replace the old flat "lightblue" bands */
+.classes,
+.clubs_and_careers {
+  background: linear-gradient(180deg, #fff 0%, var(--surface-tint) 100%);
+}
+
+.classes > *,
+.certifications > *,
+.clubs_and_careers > * {
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+.classes div,
+.certifications div,
+.clubs_and_careers div {
+  margin-left: 0;
+}
+
+/* Vertical separator line between the two columns (desktop) */
+@media (min-width: 1001px) {
+  .classes > :nth-child(2),
+  .certifications > :nth-child(2),
+  .clubs_and_careers > :nth-child(2) {
+    padding-left: 48px;
+    border-left: 1px solid var(--border-soft);
+  }
+}
+
+.classes h2,
+.certifications h2,
+.clubs_and_careers h2 {
+  margin-bottom: 12px;
+  font-size: 34px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--primary-color);
+}
+
+.classes p,
+.classes ul,
+.certifications p,
+.certifications ul,
+.clubs_and_careers p,
+.clubs_and_careers ul {
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--text);
+}
+
+.classes ul,
+.clubs_and_careers ul {
+  margin: 12px 0 0 22px;
+}
+
+.classes li,
+.clubs_and_careers li {
+  margin-bottom: 6px;
+}
+
+/* Embedded videos: rounded, full column width */
+.classes iframe,
+.certifications iframe,
+.clubs_and_careers iframe {
+  display: block;
+  width: 100% !important;
+  height: auto !important;
+  aspect-ratio: 16 / 9;
+  margin: 16px 0 0 !important;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+}
+
+/* "Click here to see classes!" becomes an outlined pill button */
+.classes .dropdown {
+  margin-top: 20px;
+}
+
+.classes .dropdown-header {
+  display: inline-flex;
+  padding: 10px 22px;
+  background: #fff;
+  border: 1.5px solid var(--border-strong);
+  border-radius: 9999px;
+  color: var(--primary-color);
+  transition: background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.classes .dropdown-header:hover {
+  background: var(--tint-blue);
+  border-color: var(--primary-color);
+  transform: translateY(-2px);
+}
+
+.classes .dropdown-header h3 {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.classes .dropdown-header h3:hover {
+  color: inherit;
+}
+
+.classes .dropdown-header .arrow {
+  padding-left: 10px;
+  font-size: 12px;
+}
+
+.classes .dropdown-content {
+  width: auto;
+  margin-top: 12px;
+  padding: 16px 20px;
+  background: #fff;
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+}
+
+.classes .dropdown-content ul {
+  margin: 0;
+  list-style: none;
+}
+
+.classes .dropdown-content li {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.classes .dropdown-content li:last-child {
+  border-bottom: none;
+}
+
+/* Certification list: clean rows separated by soft divider lines */
+.certifications-list {
+  margin: 16px 0 0 !important;
+  list-style: none;
+  border-top: 1px solid var(--border-soft);
+}
+
+.certifications-list li.dropdown {
+  width: 100%;
+  border-bottom: 1px solid var(--border-soft);
+  border-radius: 0;
+}
+
+.certifications-list .dropdown-header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 14px 4px;
+  border-radius: 0;
+  font-family: var(--font-body);
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text);
+  transition: color 0.2s ease;
+}
+
+.certifications-list .dropdown-header:hover {
+  color: var(--primary-color);
+}
+
+.certifications-list .dropdown-header .arrow {
+  font-size: 12px;
+  color: var(--primary-color);
+}
+
+.certifications-list li .dropdown-content {
+  padding: 0 4px 16px;
+  border-top: none;
+  font-weight: 400;
+  color: var(--text-muted);
+}
+
+/* ---------- 10. Certification badges & club logos ---------- */
+.cert_seals {
+  gap: 16px !important;
+  padding: 0 !important;
+  margin-top: 0 !important;
+  align-content: start;
+}
+
+/* Every badge sits on a matching white tile */
+.cert_seals img {
+  width: 100%;
+  height: 150px;
+  object-fit: contain;
+  margin: 0 !important;
+  padding: 16px !important;
+  background: #fff;
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.club-logos {
+  height: auto;
+  gap: 16px !important;
+  margin-top: 8px;
+  padding-top: 32px;
+  border-top: 1px solid var(--border-soft);   /* divider above the logo row */
+}
+
+.club-logos img {
+  width: auto !important;
+  max-width: 100%;
+  height: 96px !important;
+  object-fit: contain;
+  padding: 12px 20px !important;
+  background: #fff;
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .cert_seals img:hover,
+  .club-logos img:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+  }
+}
+
+/* ---------- 11. Student testimonials ---------- */
+.test_head {
+  margin-top: var(--section-space);
+  padding: 0 24px;
+}
+
+.testimonial-heading {
+  margin: 0;
+  padding: 0;
+  background: none;
+}
+
+.swiper {
+  background: transparent;
+}
+
+.swiper-slide {
+  padding: 24px 16px 64px;
+  box-shadow: none;
+}
+
+.testimonial-content {
+  width: min(1100px, 100%);
+  margin: 24px auto 0;
+  padding: 48px 170px 48px 56px;      /* right padding keeps the quote clear of the Hawks logo */
+  background-position: right 28px bottom 24px;
+  background-size: 110px auto;
+  gap: 48px;
+  align-items: center;
+  background-color: #fff;
+  border: 1px solid var(--border-soft);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+}
+
+.profile-img {
+  width: 240px;
+  height: 240px;
+  border: 6px solid #fff;
+  box-shadow: 0 0 0 1px var(--border-soft), var(--shadow-md);
+}
+
+/* Vertical separator between photo and quote */
+.testimonial .text {
+  padding-left: 48px;
+  border-left: 1px solid var(--border-soft);
+}
+
+.testimonial h3 {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--primary-color);
+}
+
+.testimonial p {
+  padding-top: 16px;
+  font-family: var(--font-body);
+  font-size: 19px;
+  font-style: italic;
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+
+/* Slider arrows: round white buttons with a chevron */
+.swiper-button-next,
+.swiper-button-prev {
+  width: 48px;
+  height: 48px;
+  clip-path: none;
+  border-radius: 50%;
+  background: #fff;
+  border: 1px solid var(--border-strong);
+  box-shadow: var(--shadow-sm);
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.swiper-button-prev,
+.swiper-button-prev:hover {
+  transform: rotate(180deg);   /* reuse the right-pointing chevron */
+}
+
+.swiper-button-next:hover {
+  transform: none;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  filter: none;
+  background: var(--tint-blue);
+  box-shadow: var(--shadow-md);
+}
+
+.triangle-left,
+.triangle-right {
+  display: block;
+  width: 11px;
+  height: 11px;
+  margin-left: -4px;
+  border-top: 3px solid var(--primary-color);
+  border-right: 3px solid var(--primary-color);
+  transform: rotate(45deg);
+}
+
+.swiper .swiper-pagination-bullet-active {
+  background: var(--primary-color);
+}
+
+/* ---------- 12. Footer ---------- */
+footer {
+  position: relative;
+  margin-top: var(--section-space);
+  padding: 64px 40px 28px;
+  text-align: left;
+  background: var(--navy-ink);
+}
+
+/* Thin blue-to-orange accent line along the top edge */
+footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+}
+
+.footer-top {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  gap: 48px;
+  align-items: stretch;
+}
+
+/* Vertical separator between address and maps */
+.footer-info-col {
+  padding-right: 48px;
+  border-right: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+/* Logo on a white tile so the dark-blue lettering stays readable */
+.footer-logo {
+  display: inline-block;
+  margin-bottom: 20px;
+  padding: 12px 18px;
+  background: #fff;
+  border-radius: var(--radius-md);
+}
+
+.footer-logo img {
+  max-width: 240px;
+  margin: 0;
+}
+
+.footer-info address {
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.86);
+}
+
+.footer-map {
+  display: flex;
+  gap: 16px;
+  height: 260px;
+}
+
+.footer-map iframe {
+  flex: 1;
+  width: auto !important;
+  height: 100%;
+  margin: 0 !important;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.footer-bottom {
+  max-width: var(--content-width);
+  margin: 40px auto 0;
+  padding-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.62);
+}
+
+/* ---------- 13. Responsive adjustments for the design system ---------- */
+@media (max-width: 1280px) {
+  .footer-info-col {
+    padding-right: 0;
+    border-right: none;
+  }
+
+  .footer-map {
+    padding-top: 32px;
+    border-top: 1px solid rgba(255, 255, 255, 0.12);   /* horizontal divider once stacked */
+  }
+}
+
+@media (max-width: 1024px) {
+  /* Mobile menu rows: square, separated by divider lines */
+  header.has-mobile-nav nav ul li a {
+    border-radius: 0;
+  }
+
+  header.has-mobile-nav nav > ul > li > a:hover {
+    background: var(--tint-blue);
+  }
+
+  header.has-mobile-nav nav ul li ul {
+    padding: 0;
+    border-radius: 0;
+    box-shadow: none;
+  }
+}
+
+@media (max-width: 1000px) {
+  .card-grid-pathways {
+    padding: 0 24px;
+  }
+
+  .dashboard-wrapper {
+    padding: var(--section-space) 24px 0;
+  }
+
+  .dashboard-grid {
+    gap: 16px;
+    grid-auto-rows: auto;
+  }
+
+  .dashboard-grid .dashboard-card .card-content {
+    padding: 36px 28px !important;
+  }
+
+  .news-section,
+  .student-gallery {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .hero[class*="-hero"] {
+    height: 260px;
+    padding: 0 20px 28px;
+  }
+
+  .offer p {
+    margin-top: 32px;
+    font-size: 18px;
+  }
+
+  .classes,
+  .certifications,
+  .clubs_and_careers {
+    padding: 32px 28px;
+  }
+
+  /* Stacked columns: horizontal divider instead of vertical */
+  .classes > :nth-child(2),
+  .certifications > :nth-child(2),
+  .clubs_and_careers > :nth-child(2) {
+    padding-top: 24px;
+    border-top: 1px solid var(--border-soft);
+  }
+
+  .classes h2,
+  .certifications h2,
+  .clubs_and_careers h2 {
+    font-size: 30px;
+  }
+
+  .cert_seals img {
+    height: 130px;
+  }
+
+  .testimonial-content {
+    padding: 32px 28px;
+    gap: 28px;
+  }
+
+  .testimonial .text {
+    padding-left: 28px;
+  }
+
+  .profile-img {
+    width: 180px;
+    height: 180px;
+  }
+
+  .testimonial p {
+    font-size: 17px;
+  }
+
+  footer {
+    padding: 56px 24px 24px;
+  }
+}
+
+@media (max-width: 700px) {
+  .testimonial-content {
+    padding-bottom: 110px;   /* room for the Hawks logo underneath */
+    background-position: center bottom 20px;
+    background-size: 80px auto;
+  }
+
+  /* Arrows move down beside the dots so they don't cover the quote */
+  .swiper .swiper-button-prev,
+  .swiper .swiper-button-next {
+    top: auto;
+    bottom: 4px;
+    width: 44px;
+    height: 44px;
+    margin-top: 0;
+  }
+
+  .swiper .swiper-button-prev { left: calc(50% - 110px); }
+  .swiper .swiper-button-next { right: calc(50% - 110px); }
+
+  .testimonial .text {
+    padding-left: 0;
+    padding-top: 20px;
+    border-left: none;
+    border-top: 1px solid var(--border-soft);
+  }
+}
+
+@media (max-width: 640px) {
+  .news-section .news-heading,
+  .student-gallery-heading,
+  .sponsor-carousel-section h2,
+  .testimonial-heading {
+    font-size: 28px;
+    letter-spacing: 0.01em;
+  }
+
+  .overline {
+    font-size: 11px;
+    padding: 5px 12px;
+  }
+
+  .subheading {
+    font-size: 18px;
+    padding: 16px;
+  }
+
+  .card-grid-pathways {
+    margin-top: 32px;
+    padding: 0 16px;
+  }
+
+  .news-section,
+  .student-gallery {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .news-section-header,
+  .student-gallery-header {
+    margin-bottom: 32px;
+  }
+
+  .dashboard-wrapper {
+    padding: var(--section-space) 16px 0;
+  }
+
+  .dashboard-grid .dashboard-card .card-content {
+    padding: 28px 20px !important;
+  }
+
+  .dashboard-grid .dashboard-card .card-content h1 {
+    font-size: 30px;
+  }
+
+  .carousel-track img {
+    height: 64px;
+    padding: 10px 16px;
+  }
+
+  .hero[class*="-hero"] {
+    height: 210px;
+  }
+
+  .offer p {
+    margin-top: 24px;
+    padding: 0 16px;
+    font-size: 17px;
+  }
+
+  .classes,
+  .certifications,
+  .clubs_and_careers {
+    width: calc(100% - 32px);
+    padding: 24px 18px;
+  }
+
+  .classes h2,
+  .certifications h2,
+  .clubs_and_careers h2 {
+    font-size: 26px;
+  }
+
+  .cert_seals {
+    gap: 10px !important;
+  }
+
+  .cert_seals img {
+    height: 100px;
+    padding: 10px !important;
+  }
+
+  .club-logos img {
+    height: 72px !important;
+    padding: 8px 14px !important;
+  }
+
+  .swiper-slide {
+    padding: 16px 4px 56px;
+  }
+
+  .testimonial-content {
+    padding: 24px 18px 110px;
+  }
+
+  .profile-img {
+    width: 140px;
+    height: 140px;
+  }
+
+  .footer-map {
+    height: auto;
+  }
+
+  .footer-map iframe {
+    flex: none;
+    width: 100% !important;
+    height: 220px;
+  }
+
+  footer {
+    padding: 48px 16px 24px;
+  }
+}
+
+/* Respect users who prefer less motion */
+@media (prefers-reduced-motion: reduce) {
+  .donate-btn,
+  .news-view-all,
+  .card-content .stat a,
+  .card-grid-pathways .card,
+  .cert_seals img,
+  .club-logos img,
+  .classes .dropdown-header {
+    transition: none;
+  }
+}
+
+/* =====================================================================
+   PATHWAY GRID (homepage)  -  4 columns, crisp 8px corners
+   7 cards: 4 on the first row, 3 centered on the second row.
+   The grid is built from 8 half-width tracks and every card spans 2,
+   which looks exactly like 4 equal columns but lets the second row
+   start half a column in so it sits centered.
+   ===================================================================== */
+.card-grid-pathways {
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  gap: 24px;
+  max-width: var(--content-width);
+  margin: 56px auto 0;
+  padding: 0 40px;
+}
+
+.card-grid-pathways .card {
+  grid-column: span 2;
+  width: auto;
+  height: 240px;
+  border: 1px solid var(--border-soft);
+  border-radius: 8px;                /* subtle, crisp corners */
+  box-shadow: var(--shadow-md);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Second row (cards 5-7): start one half-column in, so the row is centered */
+.card-grid-pathways .card:nth-child(5) {
+  grid-column: 2 / span 2;
+}
+
+/* Slightly smaller titles so long names fit the narrower 4-column cards */
+.card-grid-pathways .card .overlay {
+  height: 60px;
+  padding: 14px 16px;
+}
+
+.card-grid-pathways .card .overlay h3 {
+  font-size: 18px;
+}
+
+/* Tablet: 2 columns (4 half-tracks); the 7th card is centered on its own row */
+@media (max-width: 1000px) {
+  .card-grid-pathways {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 20px;
+    padding: 0 24px;
+  }
+
+  .card-grid-pathways .card:nth-child(5) {
+    grid-column: span 2;
+  }
+
+  .card-grid-pathways .card:nth-child(7) {
+    grid-column: 2 / span 2;
+  }
+
+  .card-grid-pathways .card .overlay h3 {
+    font-size: 19px;
+  }
+}
+
+/* Mobile: 1 column */
+@media (max-width: 640px) {
+  .card-grid-pathways {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin-top: 32px;
+    padding: 0 16px;
+  }
+
+  .card-grid-pathways .card,
+  .card-grid-pathways .card:nth-child(5),
+  .card-grid-pathways .card:nth-child(7) {
+    grid-column: auto;
+    height: 210px;
+  }
+}
+
+/* =====================================================================
+   COLOR, SHAPE & DENSITY REFINEMENTS
+   - More orange accents on interactive elements (class/certification dropdowns)
+   - Tinted and colored section backgrounds instead of plain white
+   - Crisp 6-8px corners on cards and panels (pill shapes kept only for
+     buttons and small tags)
+   - Tighter vertical spacing between sections
+   All colors are shades/tints of --primary-color (blue) and
+   --secondary-color (orange).
+   ===================================================================== */
+
+/* ---------- Tokens ---------- */
+:root {
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 8px;
+  --section-space: 64px;
+  --tint-blue-strong: #e6eef9;          /* light tint of --primary-color for bands */
+  --tint-orange-soft: #fff3ec;          /* light tint of --secondary-color */
+  --orange-border: rgba(240, 90, 40, 0.28);
+}
+
+@media (max-width: 1000px) {
+  :root { --section-space: 52px; }
+}
+
+@media (max-width: 640px) {
+  :root { --section-space: 40px; }
+}
+
+/* ---------- Page background ---------- */
+/* Soft blue tint instead of plain white, so white panels stand out */
+body {
+  background-color: var(--surface-tint);
+}
+
+/* Sections sit directly against each other; footer needs no extra gap */
+footer {
+  margin-top: 0;
+}
+
+/* ---------- Homepage color rhythm ----------
+   hero -> orange banner -> light-blue pathways -> deep-blue news
+   -> light-orange welcome/about -> tinted gallery -> orange partner band -> navy footer */
+
+/* Pathway grid: light-blue band (full-width background behind the centered grid) */
+.card-grid-pathways {
+  max-width: 1400px;                    /* wider cards, still 4 columns */
+  margin-top: 0;
+  padding: var(--section-space) 32px;
+  background: var(--tint-blue-strong);
+  box-shadow: 0 0 0 100vmax var(--tint-blue-strong);
+  clip-path: inset(0 -100vmax);
+}
+
+/* Latest News: rich blue band with white cards */
+.news-section {
+  margin-top: 0;
+  border: none;
+  background: linear-gradient(160deg, var(--primary-deep) 0%, var(--primary-color) 100%);
+}
+
+.news-section .news-heading {
+  color: #fff;
+}
+
+.news-section .news-subheading {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.news-section .overline {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.news-section .news-dot {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.news-section .news-dot.active {
+  background: var(--secondary-color);
+}
+
+/* View All News switches to the orange CTA so it pops on blue */
+.news-section .news-view-all {
+  background: var(--secondary-dark);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.22);
+}
+
+.news-section .news-view-all:hover {
+  background: #a93a15;
+}
+
+.news-section a:focus-visible,
+.news-section button:focus-visible {
+  outline-color: #fff;
+}
+
+.news-section-header,
+.student-gallery-header {
+  margin-bottom: 32px;
+}
+
+/* Welcome / About: light-orange band, panels topped with an orange accent */
+.dashboard-wrapper {
+  padding: var(--section-space) 40px;
+  background: var(--tint-orange-soft);
+}
+
+.dashboard-grid {
+  gap: 20px;
+}
+
+.dashboard-grid .dashboard-card .card-content {
+  border-top: 4px solid var(--secondary-color);
+}
+
+/* Gallery sits on the page tint */
+.student-gallery {
+  padding: var(--section-space) 40px;
+  background: transparent;
+}
+
+.gallery-card {
+  border-radius: var(--radius-md);
+}
+
+/* Partners: white heading area + orange band holding white logo tiles */
+.sponsor-carousel-section {
+  padding-top: var(--section-space);
+  background: #fff;
+}
+
+.sponsor-carousel-section h2 {
+  margin-bottom: 24px;
+}
+
+.sponsor-carousel {
+  border: none;
+  background: linear-gradient(90deg, var(--secondary-color), var(--secondary-dark));
+}
+
+.carousel-track img {
+  border-color: rgba(255, 255, 255, 0.6);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+/* ---------- Crisp corners ---------- */
+nav ul li ul li a {
+  border-radius: var(--radius-sm);
+}
+
+.news-section .news-card-img-wrapper {
+  border-radius: var(--radius-sm);
+}
+
+/* ---------- Pathway pages ---------- */
+.offer p {
+  margin-top: 32px;
+}
+
+/* White panels on the tinted page, each topped with a colored accent bar */
+.classes,
+.certifications,
+.clubs_and_careers {
+  background: #fff;
+  border-top: 4px solid var(--primary-color);
+}
+
+.certifications {
+  border-top-color: var(--secondary-color);
+}
+
+/* Testimonials: light-blue band */
+.test_head {
+  margin-top: var(--section-space);
+  padding-top: var(--section-space);
+  background: var(--tint-blue-strong);
+}
+
+.swiper {
+  background: var(--tint-blue-strong);
+}
+
+/* "Click here to see classes!" -> solid orange button */
+.classes .dropdown-header {
+  background: var(--secondary-dark);
+  border-color: var(--secondary-dark);
+  color: #fff;
+  box-shadow: 0 6px 16px rgba(196, 68, 26, 0.28);
+}
+
+.classes .dropdown-header:hover,
+.classes .dropdown.show .dropdown-header {
+  background: #a93a15;
+  border-color: #a93a15;
+  color: #fff;
+}
+
+.classes .dropdown-header .arrow {
+  color: #fff;
+}
+
+/* Classes info panel: orange-tinted box with an orange left accent */
+.classes .dropdown-content {
+  background: var(--tint-orange-soft);
+  border: 1px solid var(--orange-border);
+  border-left: 4px solid var(--secondary-color);
+  border-radius: var(--radius-md);
+  box-shadow: none;
+}
+
+.classes .dropdown-content li {
+  padding: 10px 12px;
+  border-bottom-color: var(--orange-border);
+  border-radius: var(--radius-sm);
+  transition: background-color 0.2s ease;
+}
+
+.classes .dropdown-content li:hover {
+  background: rgba(240, 90, 40, 0.10);
+}
+
+/* Certification rows: orange left border + tint on hover and when open */
+.certifications-list li.dropdown {
+  border-left: 3px solid transparent;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+.certifications-list li.dropdown:hover,
+.certifications-list li.dropdown.show {
+  background: var(--tint-orange-soft);
+  border-left-color: var(--secondary-color);
+}
+
+.certifications-list .dropdown-header {
+  padding: 14px 12px;
+}
+
+.certifications-list li.dropdown:hover .dropdown-header,
+.certifications-list li.dropdown.show .dropdown-header {
+  color: var(--secondary-dark);
+}
+
+.certifications-list .dropdown-header .arrow {
+  color: var(--secondary-color);
+}
+
+.certifications-list li .dropdown-content {
+  padding: 0 12px 16px;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1000px) {
+  .card-grid-pathways {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  .dashboard-wrapper {
+    padding: var(--section-space) 24px;
+  }
+
+  .student-gallery {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+}
+
+@media (max-width: 640px) {
+  .card-grid-pathways {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .dashboard-wrapper {
+    padding: var(--section-space) 16px;
+  }
+
+  .student-gallery {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .offer p {
+    margin-top: 24px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .certifications-list li.dropdown,
+  .classes .dropdown-content li {
+    transition: none;
+  }
+}
+
+/* =====================================================================
+   CERTIFICATION BADGE ALIGNMENT (pathway pages)
+   The badge column used to sit at the top of the Certifications panel.
+   It now stretches to the panel's full height and the badge grid is
+   centered inside it, so the logos line up with the certification list.
+   ===================================================================== */
+@media (min-width: 1001px) {
+  .certifications {
+    align-items: stretch;           /* both columns share the panel height */
+  }
+
+  .certifications > .cert_seals {
+    align-self: stretch;
+    align-content: center !important;   /* center the badge rows vertically */
+    justify-content: center;
+  }
+}
+
+/* Each badge tile centers its logo both ways */
+.cert_seals {
+  justify-items: stretch;
+}
+
+.cert_seals img {
+  display: block;
+  object-fit: contain;
+  object-position: center center;
+}
+
+/* 2-column badge grid for pages with 2 or 4 badges (cybersecurity, business),
+   so there is no lone badge on the last row */
+.cert_seals.cert_seals--two-col {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  max-width: 400px;
+  width: 100%;
+  justify-self: center;
+}
+
+.cert_seals.cert_seals--two-col img {
+  height: 170px;
+}
+
+@media (max-width: 640px) {
+  .cert_seals.cert_seals--two-col img {
+    height: 130px;
+  }
+}
+
+/* =====================================================================
+   SPACE ABOVE THE FOOTER (all pages)
+   Clear breathing room between the last section (e.g. the homepage
+   sponsor carousel) and the footer.
+   ===================================================================== */
+:root {
+  --footer-gap: 88px;
+}
+
+@media (max-width: 1000px) {
+  :root { --footer-gap: 64px; }
+}
+
+@media (max-width: 640px) {
+  :root { --footer-gap: 48px; }
+}
+
+footer {
+  margin-top: var(--footer-gap);
 }
